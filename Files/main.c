@@ -9,96 +9,40 @@
 /*   Updated: 2023/11/24 16:24:22 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <limits.h>
 
 #include "push_swap.h"
 
-void	sa()
-{
-	ft_prinft("sa\n");
-}
-
-void	sb()
-{
-	ft_prinft("sb\n");
-}
-
-void	ss()
-{
-	ft_prinft("ss\n");
-}
-
-void	pa()
-{
-	ft_prinft("pa\n");
-}
-
-void	pb()
-{
-	ft_prinft("pb\n");
-}
-
-void	rb()
-{
-	ft_prinft("rb\n");
-}
-
-void	rr()
-{
-	ft_prinft("rr\n");
-}
-
-void	rra()
-{
-	ft_prinft("rra\n");
-}
-
-void	rrr()
-{
-	ft_prinft("rrr\n");
-}
-
-void a_is_sorted()
-{
-
-}
-
-void sort_small_stack()
-{
-
-}
-
-void sort_big_stack()
-{
-
-}
-
-
 int	main(int argc, char** argv)
 {
-	int	error;
-	t_list	**stack_a;
-	t_list	**stack_b;
-
-	error = 0;
 	if (argc < 2)
-		return (-1);
-	stack_a = (t_list **)malloc(sizeof(t_list));
-	stack_b = (t_list **)malloc(sizeof(t_list));
-	*stack_a = NULL;
-	*stack_b = NULL;
-	while (argc - 1)
-	{
-		if(a == (int)a)
-		{
+		return (1);
+	
+	// Checking if the arguments are valid
 
-		}
-		argc --;
-	}
+	// Checking if the arguments are numbers
 
+	// Checking if the arguments are not repeated
 
-	if(error = 1)
-	{
-		ft_prinft("Error\n");
-	}
+	// Changing the arguments to long int
+
+	// Arranging the arguments in a linked list
+
+	// Pushing the arguments to stack A
+
+	// Checking if the stack is sorted
+
+	// Create empty stack A
+
+	// Create empty stack B
+
+	// Sorting the stack A
+
+	// Printing the instructions
+
 	return(0);
 }
