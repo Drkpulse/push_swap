@@ -1,46 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:24:22 by joseferr          #+#    #+#             */
-/*   Updated: 2023/11/24 16:24:22 by joseferr         ###   ########.fr       */
+/*   Updated: 2024/01/23 16:59:39 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include <limits.h>
 
 #include "push_swap.h"
 
 int	main(int argc, char** argv)
 {
-	if (argc < 2)
+	t_stack_node	*a;
+	t_stack_node	*b;
+
+	a = NULL;
+	b = NULL;
+	if (argc == 1 || (2 == argc && !argv[1][0]))
 		return (1);
-	
-	// Checking if the arguments are valid
-
-	// Checking if the arguments are numbers
-
-	// Checking if the arguments are not repeated
-
-	// Changing the arguments to long int
-
-	// Arranging the arguments in a linked list
-
-	// Pushing the arguments to stack A
+	else if (argc == 2)
+		argv = ft_split(argv[1], ' ');
+	stack_init(&a, argv + 1, argc == 2);
 
 	// Checking if the stack is sorted
 
-	// Create empty stack A
-
-	// Create empty stack B
-
 	// Sorting the stack A
+
+	// Tiny Sort 3 Numbers
+
+	// Small Sort 5 Numbers
+
+	// Sort 100 Numbers
+
+	// Big Sort 100+ Numbers
 
 	// Printing the instructions
 
