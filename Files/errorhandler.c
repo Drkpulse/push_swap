@@ -6,7 +6,7 @@
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:37:48 by joseferr          #+#    #+#             */
-/*   Updated: 2024/01/23 16:44:28 by joseferr         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:11:38 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	free_matrix(char **argv)
 	free(argv - 1);
 }
 
-void	free_stack(t_stack_node **stack)
+void	free_stack(stack_node **stack)
 {
-	t_stack_node	*tmp;
-	t_stack_node	*current;
+	stack_node	*tmp;
+	stack_node	*current;
 
 	if (NULL == stack)
 		return ;
@@ -41,7 +41,7 @@ void	free_stack(t_stack_node **stack)
 	*stack = NULL;
 }
 
-void	error_free(t_stack_node **a, char **argv, bool flag_argc_2)
+void	error_free(stack_node **a, char **argv, bool flag_argc_2)
 {
 	free_stack(a);
 	if (flag_argc_2)
@@ -68,7 +68,7 @@ int	syntax_error(char *str_nbr)
 	return (0);
 }
 
-int	repetition_error(t_stack_node *a, int nbr)
+int	repetition_error(stack_node *a, int nbr)
 {
 	if (NULL == a)
 		return (0);

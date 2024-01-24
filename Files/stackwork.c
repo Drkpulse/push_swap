@@ -6,7 +6,7 @@
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:36:29 by joseferr          #+#    #+#             */
-/*   Updated: 2024/01/23 16:39:47 by joseferr         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:11:37 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static long	ft_atol(const char *str)
 	return (num * isneg);
 }
 
-void	stack_init(t_stack_node **a, char **argv, bool flag_argc_2)
+void	validator(stack_node **a, char **argv, bool flag_argc_2)
 {
 	long	nbr;
 	int		i;

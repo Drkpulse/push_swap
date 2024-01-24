@@ -6,7 +6,7 @@
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:24:22 by joseferr          #+#    #+#             */
-/*   Updated: 2024/01/23 16:59:39 by joseferr         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:11:37 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char** argv)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
+	stack_node	*a;
+	stack_node	*b;
 
 	a = NULL;
 	b = NULL;
@@ -23,7 +23,7 @@ int	main(int argc, char** argv)
 		return (1);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	stack_init(&a, argv + 1, argc == 2);
+	validator(&a, argv + 1, argc == 2);
 
 	// Checking if the stack is sorted
 

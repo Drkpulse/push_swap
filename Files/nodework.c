@@ -6,13 +6,13 @@
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:39:19 by joseferr          #+#    #+#             */
-/*   Updated: 2024/01/23 16:53:27 by joseferr         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:11:38 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_node	*find_last_node(t_stack_node *head)
+stack_node	*find_last_node(stack_node *head)
 {
 	if (head == NULL)
 		return (NULL);
@@ -21,14 +21,14 @@ t_stack_node	*find_last_node(t_stack_node *head)
 	return (head);
 }
 
-void	append_node(t_stack_node **stack, int nbr)
+void	append_node(stack_node **stack, int nbr)
 {
-	t_stack_node	*node;
-	t_stack_node	*last_node;
+	stack_node	*node;
+	stack_node	*last_node;
 
 	if (stack == NULL)
 		return ;
-	node = malloc(sizeof(t_stack_node));
+	node = malloc(sizeof(stack_node));
 	if (node === NULL)
 		return ;
 	node->next = NULL;
