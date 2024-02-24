@@ -12,55 +12,28 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include <limits.h>
+# include "./Libft/libft.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include <string.h>
 
-typedef struct s_stack_node
-{
-	int					value;
-	struct s_stack_node	*target_node;
-	struct s_stack_node	*next;
-	struct s_stack_node	*prev;
-}				stack_node;
+typedef struct Node_Stack{
+    long number;
+    struct Node_Stack* next;
+    struct Node_Stack* previous;
+} Node_Stack;
 
 
-//*** Commands ***
-void			sa(stack_node **a, bool checker);
-void			sb(stack_node **b, bool checker);
-void			ss(stack_node **a, stack_node **b, bool checker);
-void			ra(stack_node **a, bool checker);
-void			rb(stack_node **b, bool checker);
-void			rr(stack_node **a, stack_node **b, bool checker);
-void			rra(stack_node **a, bool checker);
-void			rrb(stack_node **b, bool checker);
-void			rrr(stack_node **a, stack_node **b, bool checker);
-void			pa(stack_node **a, stack_node **b, bool checker);
-void			pb(stack_node **b, stack_node **a, bool checker);
+bool    stack_sorted(Node_Stack *stack);
+void    ini_stack(Node_Stack **stack, char **argv);
+void    validator(Node_Stack **stack, char **argv);
+void    duplicates(Node_Stack **stack, char **argv);
+int     syntax_error(char *str_nbr);
 
-//*** Handle input ./push_swap "1 -42 1337" ***
-char			**ft_split(char *str, char separator);
-
-//*** Handle errors-free ***
-void			free_matrix(char **argv);
-void			error_free(stack_node **a, char **argv, bool flag_argc_2);
-void			free_stack(stack_node **stack);
-int				repetition_error(stack_node *a, int nbr);
-int				syntax_error(char *str_nbr);
-
-void			stack_init(stack_node **a, char **argv, bool flag_argc_2);
-void			init_nodes(stack_node *a, stack_node *b);
-void			set_current_position(stack_node *stack);
-void			set_price(stack_node *a, stack_node *b);
-void			set_cheapest(stack_node *b);
-
-//*** Stack creation ***
-void			validator(stack_node **a, char **argv, bool flag_argc_2);
-void			init_nodes(stack_node *a, stack_node *b);
-void			set_current_position(stack_node *stack);
-void			set_price(stack_node *a, stack_node *b);
-void			set_cheapest(stack_node *b);
-
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+static size_t	ft_count(char const *s, char c);
+static void	ft_free(char **arr, int i);
+static char	**ft_allocate(char **frs, char const *s, char c, size_t size);
+char	**ft_split(char const *s, char c);
 #endif
