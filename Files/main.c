@@ -33,6 +33,12 @@ int	main(int argc, char** argv)
 	if (stack_sorted(a))
 		return (0);
 
+	ra(&a);
+	ra(&a);
+	sa(&a);
+	rra(&a);
+	rra(&a);
+	
 	while(a)
 	{
 		printf("%ld\n", a->number);

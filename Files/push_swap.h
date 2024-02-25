@@ -36,4 +36,18 @@ static size_t	ft_count(char const *s, char c);
 static void	ft_free(char **arr, int i);
 static char	**ft_allocate(char **frs, char const *s, char c, size_t size);
 char	**ft_split(char const *s, char c);
+// Swap Fucntions
+void    swapations(Node_Stack **stack);
+void    sa(Node_Stack **stack);
+void    sb(Node_Stack **stack);
+void    ss(Node_Stack **astack, Node_Stack **bstack);
+// Rotation Functions
+void    rotations(Node_Stack **stack);
+void ra(Node_Stack **stack);
+void rb(Node_Stack **stack);
+void rr(Node_Stack **astack, Node_Stack **bstack);
+void revrotate(Node_Stack **stack);
+void    rra(Node_Stack **stack);
+void    rrb(Node_Stack **stack);
+void    rrr(Node_Stack **astack, Node_Stack **bstack);
 #endif

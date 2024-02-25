@@ -1,24 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   handler.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:35:11 by joseferr          #+#    #+#             */
-/*   Updated: 2023/10/17 14:55:39 by joseferr         ###   ########.fr       */
+/*   Created: 2024/02/25 12:26:00 by marvin            #+#    #+#             */
+/*   Updated: 2024/02/25 12:26:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <push_swap.h>
 
-int	ft_tolower(int c)
-{
-	if (c >= 65 && c <= 90)
-	{
-		c = c + 32;
-		return (c);
-	}
-	else
-		return (c);
-}
+int ft_clean()

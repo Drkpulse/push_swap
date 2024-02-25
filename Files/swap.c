@@ -12,10 +12,35 @@
 
 #include "push_swap.h"
 
-void    swap(Node_Stack **stack)
+void    swapations(Node_Stack **stack)
 {
-    Node_Stack *temp;
+    long temp;
+    if (*stack && (*stack)->next)
+    {
+        temp = (*stack)->number;
+        (*stack)->number = (*stack)->next->number;
+        (*stack)->next->number = temp;
 
-    
+        (*stack)->previous = (*stack)->next;
+        (*stack)->next->previous = *stack;
+    }
+}
 
+void sa(Node_Stack **stack)
+{
+    swapations(stack);
+    printf("sa\n");
+}
+
+void sb(Node_Stack **stack)
+{
+    swapations(stack);
+    printf("sb\n");
+}
+
+void ss(Node_Stack **astack, Node_Stack **bstack)
+{
+    swapations(astack);
+    swapations(bstack);
+    printf("ss\n"); 
 }
