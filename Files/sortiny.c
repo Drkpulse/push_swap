@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   sortiny.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 16:58:25 by joseferr          #+#    #+#             */
-/*   Updated: 2024/01/24 17:11:38 by joseferr         ###   ########.fr       */
+/*   Created: 2024/02/25 21:09:16 by joseferr          #+#    #+#             */
+/*   Updated: 2024/02/25 21:09:16 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
-#include <stdio.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void    tiny_sort(Node_Stack **stack)
 {
-	char	*sub;
-	size_t	size;
+    while(!stack_sorted(*stack))
+    {
+        if ((*stack)->number > (*stack)->next->number)
+            sa(stack);
 
-	if (!s)
-		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
-	size = ft_strlen(s + start);
-	if (size < len)
-		len = size;
-	sub = (char *)malloc(sizeof(char) * (len + 1));
-	if (!sub)
-		return (NULL);
-	ft_strlcpy(sub, s + start, len + 1);
-	return (sub);
+        else
+            rra(stack);
+    }
+}
+
+void    smallsort(Node_Stack **stack)
+{
+    while(!stack_sorted(*stack))
+    {
+        while((*stack)->number > (*stack)->next->number)
+        {
+            
+        }
+    }
 }

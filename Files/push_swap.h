@@ -28,19 +28,21 @@ typedef struct Node_Stack{
 bool    stack_sorted(Node_Stack *stack);
 void    ini_stack(Node_Stack **stack, char **argv);
 void    validator(Node_Stack **stack, char **argv);
-void    duplicates(Node_Stack **stack, char **argv);
-int     syntax_error(char *str_nbr);
+bool    duplicates(Node_Stack **stack, char **argv);
+bool	syntax_error(char *str_nbr);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 static size_t	ft_count(char const *s, char c);
 static void	ft_free(char **arr, int i);
 static char	**ft_allocate(char **frs, char const *s, char c, size_t size);
 char	**ft_split(char const *s, char c);
+
 // Swap Fucntions
 void    swapations(Node_Stack **stack);
 void    sa(Node_Stack **stack);
 void    sb(Node_Stack **stack);
 void    ss(Node_Stack **astack, Node_Stack **bstack);
+
 // Rotation Functions
 void    rotations(Node_Stack **stack);
 void ra(Node_Stack **stack);
@@ -50,4 +52,7 @@ void revrotate(Node_Stack **stack);
 void    rra(Node_Stack **stack);
 void    rrb(Node_Stack **stack);
 void    rrr(Node_Stack **astack, Node_Stack **bstack);
+
+// Sorting Functions
+void    tiny_sort(Node_Stack **stack);
 #endif

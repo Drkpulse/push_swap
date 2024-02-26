@@ -39,42 +39,45 @@ void    validator(Node_Stack **stack, char **argv)
         }
         i++;
     }
-    duplicates(stack, argv);
+    if (duplicates(stack, argv))
+    {
+        printf("Error Duplicates\n");
+        exit(1);
+    }
+    ini_stack(stack, argv);
 }
 
-int	syntax_error(char *str_nbr)
+bool	syntax_error(char *str_nbr)
 {
 	if (!(*str_nbr == '+'
 			|| *str_nbr == '-'
 			|| (*str_nbr >= '0' && *str_nbr <= '9')))
-		return (1);
+		return (true);
 	if ((*str_nbr == '+'
 			|| *str_nbr == '-')
 		&& !(str_nbr[1] >= '0' && str_nbr[1] <= '9'))
-		return (1);
+		return (true);
 	while (*++str_nbr)
 	{
 		if (!(*str_nbr >= '0' && *str_nbr <= '9'))
-			return (1);
+			return (true);
 	}
-	return (0);
+	return (false);
 }
 
-void    duplicates(Node_Stack **stack, char **argv)
+bool    duplicates(Node_Stack **stack, char **argv)
 {
     int i = 0;
     while (argv[i]) {
         int j = i + 1;
         while (argv[j]) {
             if (strcmp(argv[i], argv[j]) == 0) {
-                printf("Error Duplicates\n");
-                exit(1);
+                return (true);
             }
             j++;
         }
         i++;
     }
-    ini_stack(stack, argv);
 }
 
 
