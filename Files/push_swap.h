@@ -31,12 +31,6 @@ void    validator(Node_Stack **stack, char **argv);
 bool    duplicates(Node_Stack **stack, char **argv);
 bool	syntax_error(char *str_nbr);
 
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-static size_t	ft_count(char const *s, char c);
-static void	ft_free(char **arr, int i);
-static char	**ft_allocate(char **frs, char const *s, char c, size_t size);
-char	**ft_split(char const *s, char c);
-
 // Swap Fucntions
 void    swapations(Node_Stack **stack);
 void    sa(Node_Stack **stack);
