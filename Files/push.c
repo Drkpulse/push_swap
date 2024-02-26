@@ -21,10 +21,10 @@ void    push(Node_Stack **frststack, Node_Stack **lststack)
         tmp = *frststack;
         *frststack = (*frststack)->next;
         if (*frststack)
-            (*frststack)->prev = NULL;
+            (*frststack)->previous = NULL;
         tmp->next = *lststack;
         if (*lststack)
-            (*lststack)->prev = tmp;
+            (*lststack)->previous = tmp;
         *lststack = tmp;
     }
 }

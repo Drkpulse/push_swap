@@ -29,7 +29,7 @@ int	main(int argc, char** argv)
 		i = 0;
 
 	validator(&a, argv + i);
-
+	ini_stack(&b, argv + i);
 	if (stack_sorted(a))
 		return (0);
 	
@@ -41,9 +41,7 @@ int	main(int argc, char** argv)
 		a = a->next;
 	}
 
-	// Sorting the stack A
-
-	// Tiny Sort 3 Numbers
+	free_stack(&a);
 
 	// Small Sort 5 Numbers
 

@@ -28,7 +28,7 @@ typedef struct Node_Stack{
 bool    stack_sorted(Node_Stack *stack);
 void    ini_stack(Node_Stack **stack, char **argv);
 void    validator(Node_Stack **stack, char **argv);
-bool    duplicates(Node_Stack **stack, char **argv);
+bool    duplicates(char **argv);
 bool	syntax_error(char *str_nbr);
 
 // Swap Fucntions
@@ -49,4 +49,10 @@ void    rrr(Node_Stack **astack, Node_Stack **bstack);
 
 // Sorting Functions
 void    tiny_sort(Node_Stack **stack);
+
+// Cleaning Functions
+void   free_stack(Node_Stack **stack);
+void	free_argv(char **argv);
+int     ft_clean(Node_Stack **stack, char **argv, bool argv_f);
+
 #endif

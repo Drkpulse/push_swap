@@ -39,7 +39,7 @@ void    validator(Node_Stack **stack, char **argv)
         }
         i++;
     }
-    if (duplicates(stack, argv))
+    if (duplicates(argv))
     {
         printf("Error Duplicates\n");
         exit(1);
@@ -65,7 +65,7 @@ bool	syntax_error(char *str_nbr)
 	return (false);
 }
 
-bool    duplicates(Node_Stack **stack, char **argv)
+bool    duplicates(char **argv)
 {
     int i = 0;
     while (argv[i]) {
@@ -78,6 +78,7 @@ bool    duplicates(Node_Stack **stack, char **argv)
         }
         i++;
     }
+    return (false);
 }
 
 

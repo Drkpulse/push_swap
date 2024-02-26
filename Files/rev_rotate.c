@@ -14,7 +14,6 @@
 
 void    revrotate(Node_Stack **stack)
 {
-    long temp;
     Node_Stack *current;
     Node_Stack *last;
 

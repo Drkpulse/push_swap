@@ -36,7 +36,7 @@ void	free_argv(char **argv)
 	free(argv - 1);
 }
 
-int ft_clean(Node_Stack **stack, bool argv_f)
+int ft_clean(Node_Stack **stack, char **argv, bool argv_f)
 {
     if(argv_f)
         free_argv(argv);
