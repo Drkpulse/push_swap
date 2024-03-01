@@ -20,9 +20,6 @@ void    swapations(Node_Stack **stack)
         temp = (*stack)->number;
         (*stack)->number = (*stack)->next->number;
         (*stack)->next->number = temp;
-
-        (*stack)->previous = (*stack)->next;
-        (*stack)->next->previous = *stack;
     }
 }
 

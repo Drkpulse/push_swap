@@ -14,26 +14,23 @@
 
 void   free_stack(Node_Stack **stack)
 {
-    Node_Stack *tmp;
-
-    while (*stack)
-    {
-        tmp = *stack;
-        *stack = (*stack)->next;
-        free(tmp);
-    }
+    if (!*stack)
+        return;
+    if ((*stack)->next)
+        free_stack(&(*stack)->next);
+    free(*stack);
+    *stack = NULL;
 }
 
 void	free_argv(char **argv)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	if (NULL == argv || NULL == *argv)
 		return ;
-	while (argv[i])
-		free(argv[i++]);
-	free(argv - 1);
+	while (argv[++i])
+        free(argv[i]);
 }
 
 int ft_clean(Node_Stack **stack, char **argv, bool argv_f)
@@ -44,4 +41,3 @@ int ft_clean(Node_Stack **stack, char **argv, bool argv_f)
     printf("Error\n");
     return (1);
 }
-    

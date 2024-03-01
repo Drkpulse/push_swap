@@ -17,39 +17,37 @@ int	main(int argc, char** argv)
 	Node_Stack	*a;
 	Node_Stack	*b;
 	int i;
+	int argv_f;
 
 	a = NULL;
 	b = NULL;
+	i = 1;
+	argv_f = 0;
+
 	if (argc == 1 || (2 == argc && !argv[1][0]))
 		return (0);
 	else if (argc == 2)
+	{
 		argv = ft_split(argv[1], ' ');
-	i = 1;
-	if (argc == 2)
+		argv_f = 1;
 		i = 0;
-
+	}	
 	validator(&a, argv + i);
-	ini_stack(&b, argv + i);
 	if (stack_sorted(a))
 		return (0);
-	
-	tiny_sort(&a);
-	
-	while(a)
-	{
-		printf("%ld\n", a->number);
-		a = a->next;
-	}
-
+	thelastsort(&a, &b);
 	free_stack(&a);
+	free_stack(&b);
+	
+	if(argv_f)
+		free_argv(argv);
+	
 
 	// Small Sort 5 Numbers
 
 	// Sort 100 Numbers
 
 	// Big Sort 100+ Numbers
-
-	// Printing the instructions
 
 	return(0);
 }

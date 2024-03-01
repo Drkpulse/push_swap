@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 10:08:51 by joseferr          #+#    #+#             */
-/*   Updated: 2024/02/26 10:08:51 by joseferr         ###   ########.fr       */
+/*   Created: 2024/03/01 11:20:22 by joseferr          #+#    #+#             */
+/*   Updated: 2024/03/01 11:20:22 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    push(Node_Stack **frststack, Node_Stack **lststack)
+int get_target_b(Node_Stack **stack_b, int number)
 {
-    Node_Stack  *tmp;
+    Node_Stack *head;
+    int target;
+    target = INT_MIN;
 
-    if (*frststack)
+    head = *stack_b;
+    while (head)
     {
-        tmp = *frststack;
-        *frststack = (*frststack)->next;
-        tmp->next = *lststack;
-        *lststack = tmp;
+        if(head->number < number && head->number > target)
+            target = head->number;
+        head = head->next;
     }
-}
-
-void    pa(Node_Stack **astack, Node_Stack **bstack)
-{
-    push(bstack, astack);
-    printf("pa\n");
-}
-
-void    pb(Node_Stack **astack, Node_Stack **bstack)
-{
-    push(astack, bstack);
-    printf("pb\n");
+if (target == INT_MIN)
+        target = get_biggest(stack_b);
+    return (target);
 }

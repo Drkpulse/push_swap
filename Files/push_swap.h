@@ -17,11 +17,14 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <string.h>
+# include <limits.h>
 
 typedef struct Node_Stack{
     long number;
+    int index;
+    int cost;
+    int target;
     struct Node_Stack* next;
-    struct Node_Stack* previous;
 } Node_Stack;
 
 
@@ -47,12 +50,24 @@ void    rra(Node_Stack **stack);
 void    rrb(Node_Stack **stack);
 void    rrr(Node_Stack **astack, Node_Stack **bstack);
 
+// Push Functions
+void    push(Node_Stack **frststack, Node_Stack **lststack);
+void    pa(Node_Stack **astack, Node_Stack **bstack);
+void    pb(Node_Stack **astack, Node_Stack **bstack);
+
 // Sorting Functions
 void    tiny_sort(Node_Stack **stack);
+void    thelastsort(Node_Stack **stack_a, Node_Stack **stack_b);
+int     get_target_b(Node_Stack **stack_b, int number);
+int     get_biggest(Node_Stack **stack);
+int     get_lowest(Node_Stack **stack);
+void    stacksize(Node_Stack **stack);
 
 // Cleaning Functions
 void   free_stack(Node_Stack **stack);
 void	free_argv(char **argv);
 int     ft_clean(Node_Stack **stack, char **argv, bool argv_f);
 
+// Printing Functions
+void printstack(Node_Stack **stack);
 #endif

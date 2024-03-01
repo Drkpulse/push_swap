@@ -12,43 +12,60 @@
 
 #include "push_swap.h"
 
-void get_biggest(Node_Stack **stack, long *biggest)
+int get_biggest(Node_Stack **stack)
 {
     Node_Stack *current;
+    int biggest;
 
     current = *stack;
-    *biggest = current->number;
+    biggest = current->number;
     while (current)
     {
-        if (current->number > *biggest)
-            *biggest = current->number;
+        if (current->number > biggest)
+            biggest = current->number;
+        current = current->next;
+    }
+    return (biggest);
+}
+
+int get_lowest(Node_Stack **stack)
+{   
+    Node_Stack *current;
+    int lowest;
+
+    current = *stack;
+    lowest = current->number;
+    while (current)
+    {
+        if (current->number < lowest)
+            lowest = current->number;
+        current = current->next;
+    }
+    return (lowest);
+}
+
+void stacksize(Node_Stack **stack)
+{
+    Node_Stack *current;
+    int size;
+    current = *stack;
+    size = 0;
+    while (current)
+    {
+        size += 1;
         current = current->next;
     }
 }
 
-void get_lowest(Node_Stack **stack, long *lowest)
+void printstack(Node_Stack **stack)
 {
     Node_Stack *current;
 
     current = *stack;
-    *lowest = current->number;
     while (current)
     {
-        if (current->number < *lowest)
-            *lowest = current->number;
+        printf("%ld ", current->number);
         current = current->next;
     }
-}
-
-void stacksize(Node_Stack **stack, int *size)
-{
-    Node_Stack *current;
-
-    current = *stack;
-    *size = 0;
-    while (current)
-    {
-        *size += 1;
-        current = current->next;
-    }
+    printf("\n");
 }

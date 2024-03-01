@@ -40,10 +40,10 @@ void    validator(Node_Stack **stack, char **argv)
         i++;
     }
     if (duplicates(argv))
-    {
-        printf("Error Duplicates\n");
-        exit(1);
-    }
+        {
+            printf("Error Duplicate\n");
+            exit(1);
+        }
     ini_stack(stack, argv);
 }
 
@@ -99,7 +99,9 @@ void    ini_stack(Node_Stack **stack, char **argv)
         }
         new->number = ft_atol(argv[i]);
         new->next = NULL;
-        new->previous = NULL;
+        new->cost = 0;
+        new->target = 0;
+        new->index = 1;
         if (!*stack)
         {
             *stack = new;
@@ -108,9 +110,9 @@ void    ini_stack(Node_Stack **stack, char **argv)
         else
         {
             temp->next = new;
-            new->previous = temp;
             temp = new;
         }
         i++;
     }
+    //free_stack(&temp);
 }
