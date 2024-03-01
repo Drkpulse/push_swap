@@ -35,7 +35,11 @@ int	main(int argc, char** argv)
 	validator(&a, argv + i);
 	if (stack_sorted(a))
 		return (0);
-	thelastsort(&a, &b);
+	if (stacksize(&a) == 3)
+		tiny_sort(&a);
+	else
+		thelastsort(&a, &b);
+
 	free_stack(&a);
 	free_stack(&b);
 	

@@ -52,16 +52,21 @@ void    rrr(Node_Stack **astack, Node_Stack **bstack);
 
 // Push Functions
 void    push(Node_Stack **frststack, Node_Stack **lststack);
-void    pa(Node_Stack **astack, Node_Stack **bstack);
+void    pa(Node_Stack **bstack, Node_Stack **astack);
 void    pb(Node_Stack **astack, Node_Stack **bstack);
 
 // Sorting Functions
 void    tiny_sort(Node_Stack **stack);
 void    thelastsort(Node_Stack **stack_a, Node_Stack **stack_b);
+int get_target_a(Node_Stack **stack_a, int number);
 int     get_target_b(Node_Stack **stack_b, int number);
 int     get_biggest(Node_Stack **stack);
 int     get_lowest(Node_Stack **stack);
-void    stacksize(Node_Stack **stack);
+int stacksize(Node_Stack **stack);
+void    sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b);
+int get_index(Node_Stack **stack, int target);
+void get_cost(Node_Stack **stack_a, Node_Stack **stack_b);
+void return_to_base(Node_Stack **stack_a, Node_Stack **stack_b);
 
 // Cleaning Functions
 void   free_stack(Node_Stack **stack);

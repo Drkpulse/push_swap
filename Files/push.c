@@ -25,7 +25,7 @@ void    push(Node_Stack **frststack, Node_Stack **lststack)
     }
 }
 
-void    pa(Node_Stack **astack, Node_Stack **bstack)
+void    pa(Node_Stack **bstack, Node_Stack **astack)
 {
     push(bstack, astack);
     printf("pa\n");

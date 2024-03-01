@@ -14,23 +14,91 @@
 
 void thelastsort(Node_Stack **stack_a, Node_Stack **stack_b)
 {
-    int i;
     pb(stack_a, stack_b);
     pb(stack_a, stack_b);
-    i = get_target_b(stack_b, 5);
+    sort_until_three(stack_a, stack_b);
+    tiny_sort(stack_a);
+    return_to_base(stack_a, stack_b);
+
+    // Debugging
+    printf("a: ");
     printstack(stack_a);
+    printf("b: ");
     printstack(stack_b);
+
+    /* COST & TARGET DEBUG
+    Node_Stack *print;
+    print = *stack_a;
+    while(print)
+    {
+        printf("number: %ld ", print->number);
+        printf("index: %d ", print->index);
+        printf("target: %d ", print->target);
+        printf("cost: %d\n", print->cost);
+        print = print->next;
+    }
+    */
+}
+
+void sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b)
+{
+    Node_Stack *current;
+    int saved_cost;
+    int index_b;
+    saved_cost = INT_MAX;
+
+    current = *stack_a;
+    while (stacksize(stack_a) > 3)
+    {
+        get_cost(stack_a, stack_b);
+        while(current->cost > 1)
+        {
+            if(current->cost < saved_cost)
+                saved_cost = current->cost;
+            current = current->next;
+        }   
+        if(current->index < stacksize(stack_a)/2)
+        {
+            while(current->index > 0)
+            {
+                ra(stack_a);
+                current->index--;
+            }
+            index_b = get_index(stack_b, current->target);
+            while(index_b > 0)
+            {
+                rb(stack_b);
+                index_b--;
+            }
+            pb(stack_a, stack_b);
+        }
+        if(current->index >= stacksize(stack_a)/2)
+        {
+            while(current->index < stacksize(stack_a))
+            {
+                rra(stack_a);
+                current->index++;
+            }
+            index_b = get_index(stack_b, current->target);
+            while(index_b < stacksize(stack_b))
+            {
+                rrb(stack_b);
+                index_b++;
+            }
+            pb(stack_a, stack_b);
+        }
+    }
 
 }
 
-void sort_for_three(Node_Stack **stack_a, Node_Stack **stack_b)
+void return_to_base(Node_Stack **stack_a, Node_Stack **stack_b)
 {
-    while (stacksize(stack_a) > 3)
+    Node_Stack *current;
+
+    current = *stack_b;
+
+    while(current)
     {
-        if (get_target_b(stack_b, (*stack_a)->number) == (*stack_b)->number)
-            pb(stack_a, stack_b);
-        else
-            rrb(stack_b);
+        
     }
-    
 }

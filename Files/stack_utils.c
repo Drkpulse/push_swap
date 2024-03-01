@@ -44,17 +44,20 @@ int get_lowest(Node_Stack **stack)
     return (lowest);
 }
 
-void stacksize(Node_Stack **stack)
+int stacksize(Node_Stack **stack)
 {
     Node_Stack *current;
     int size;
     current = *stack;
     size = 0;
+    if (!current)
+        return (size);
     while (current)
     {
         size += 1;
         current = current->next;
     }
+    return (size);
 }
 
 void printstack(Node_Stack **stack)
