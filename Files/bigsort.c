@@ -18,7 +18,7 @@ void thelastsort(Node_Stack **stack_a, Node_Stack **stack_b)
     pb(stack_a, stack_b);
     sort_until_three(stack_a, stack_b);
     tiny_sort(stack_a);
-    return_to_base(stack_a, stack_b);
+    //return_to_base(stack_a, stack_b);
 
     // Debugging
     printf("a: ");
@@ -59,27 +59,46 @@ void sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b)
         }   
         if(current->index < stacksize(stack_a)/2)
         {
+            index_b = get_index(stack_b, current->target);
+            // Get both up
+            while(current->index > 0 && index_b > 0)
+            {
+                rr(stack_a, stack_b);
+                current->index--;
+                index_b--;
+            }
+            // Only Stack A needs moving
             while(current->index > 0)
             {
                 ra(stack_a);
                 current->index--;
             }
-            index_b = get_index(stack_b, current->target);
+            // Only Stack B needs Moving
             while(index_b > 0)
             {
                 rb(stack_b);
                 index_b--;
             }
+            // Get it to B
             pb(stack_a, stack_b);
         }
         if(current->index >= stacksize(stack_a)/2)
-        {
+        {   
+            index_b = get_index(stack_b, current->target);
+            // Get both up
+            while(current->index < stacksize(stack_a) && index_b < stacksize(stack_b))
+            {
+                rrr(stack_a, stack_b);
+                current->index++;
+                index_b++;
+            }
+            // Only stack A up
             while(current->index < stacksize(stack_a))
             {
                 rra(stack_a);
                 current->index++;
             }
-            index_b = get_index(stack_b, current->target);
+            // Only stack B up
             while(index_b < stacksize(stack_b))
             {
                 rrb(stack_b);
@@ -88,9 +107,9 @@ void sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b)
             pb(stack_a, stack_b);
         }
     }
-
 }
 
+/*
 void return_to_base(Node_Stack **stack_a, Node_Stack **stack_b)
 {
     Node_Stack *current;
@@ -101,4 +120,4 @@ void return_to_base(Node_Stack **stack_a, Node_Stack **stack_b)
     {
         
     }
-}
+}*/
