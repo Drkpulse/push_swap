@@ -36,12 +36,16 @@ void ra(Node_Stack **stack)
 {
     rotations(stack);
     printf("ra\n");
+    // DEBUG
+    printf("Number: %ld\n", (*stack)->number);
 }
 
 void rb(Node_Stack **stack)
 {
     rotations(stack);
     printf("rb\n");
+    // DEBUG
+    printf("Number: %ld\n", (*stack)->number);
 }
 
 void rr(Node_Stack **astack, Node_Stack **bstack)
@@ -49,4 +53,8 @@ void rr(Node_Stack **astack, Node_Stack **bstack)
     rotations(astack);
     rotations(bstack);
     printf("rr\n");
+    // DEBUG
+    printf("Number: %ld\n", (*astack)->number);
+    // DEBUG
+    printf("Number: %ld\n", (*bstack)->number);
 }

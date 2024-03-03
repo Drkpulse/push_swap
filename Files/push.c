@@ -26,13 +26,17 @@ void    push(Node_Stack **frststack, Node_Stack **lststack)
 }
 
 void    pa(Node_Stack **bstack, Node_Stack **astack)
-{
+{ 
+    // DEBUG
+    printf("Number: %ld\n", (*bstack)->number);
     push(bstack, astack);
-    printf("pa\n");
+    printf("pa\n");    
 }
 
 void    pb(Node_Stack **astack, Node_Stack **bstack)
 {
+    // DEBUG
+    printf("Number: %ld\n", (*astack)->number);
     push(astack, bstack);
     printf("pb\n");
 }

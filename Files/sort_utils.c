@@ -48,9 +48,9 @@ int get_target_a(Node_Stack **stack_a, int number)
     return (target);
 }
 
-void get_cost(Node_Stack **stack_a, Node_Stack **stack_b)
+void    get_cost(Node_Stack **stack_a, Node_Stack **stack_b)
 {
-    Node_Stack *top;
+    Node_Stack *current;
     int cost;
     int index;
     int position;
@@ -59,27 +59,28 @@ void get_cost(Node_Stack **stack_a, Node_Stack **stack_b)
     index = (stacksize(stack_a)/2) - 1;
     cost = INT_MAX;
 
-    top = *stack_a;
-    while(top && position <= stacksize(stack_a)/2)
+    current = *stack_a;
+    while(current && position <= stacksize(stack_a)/2)
     {
-        top->target = get_target_b(stack_b, top->number);
-        cost = get_index(stack_b, top->target);
-        top->cost = position + cost;
-        top->index = position;
+        current->target = get_target_b(stack_b, current->number);
+        cost = get_index(stack_b, current->target);
+        current->cost = position + cost;
+        current->index = position;
         position++;
-        top = top->next;
+        current = current->next;
     }
     
-    while(top)
+    while(current)
     {
-        top->target = get_target_b(stack_b, top->number);
-        cost = get_index(stack_b, top->target);
-        top->cost = index + cost;
-        top->index = position;
+        current->target = get_target_b(stack_b, current->number);
+        cost = get_index(stack_b, current->target);
+        current->cost = index + cost;
+        current->index = position;
         position++;
         index--;
-        top = top->next;
+        current = current->next;
     }
+    printf("Costs Updated\n");
 }
 
 int get_index(Node_Stack **stack, int target)

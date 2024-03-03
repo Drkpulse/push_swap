@@ -16,17 +16,7 @@ void thelastsort(Node_Stack **stack_a, Node_Stack **stack_b)
 {
     pb(stack_a, stack_b);
     pb(stack_a, stack_b);
-    sort_until_three(stack_a, stack_b);
-    tiny_sort(stack_a);
-    //return_to_base(stack_a, stack_b);
-
-    // Debugging
-    printf("a: ");
-    printstack(stack_a);
-    printf("b: ");
-    printstack(stack_b);
-
-    /* COST & TARGET DEBUG
+    get_cost(stack_a, stack_b);
     Node_Stack *print;
     print = *stack_a;
     while(print)
@@ -37,29 +27,54 @@ void thelastsort(Node_Stack **stack_a, Node_Stack **stack_b)
         printf("cost: %d\n", print->cost);
         print = print->next;
     }
-    */
+
+    sort_until_three(stack_a, stack_b);
+    //tiny_sort(stack_a);
+    //return_to_base(stack_a, stack_b);
+
+    // Debugging
+    printf("a: ");
+    printstack(stack_a);
+    printf("b: ");
+    printstack(stack_b);
+
+    // COST & TARGET DEBUG
+    print = *stack_b;
+    while(print)
+    {
+        printf("number: %ld ", print->number);
+        printf("index: %d ", print->index);
+        printf("target: %d ", print->target);
+        printf("cost: %d\n", print->cost);
+        print = print->next;
+    }
 }
 
 void sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b)
 {
     Node_Stack *current;
-    int saved_cost;
+    //Node_Stack *test;
+    //int saved_cost;
     int index_b;
-    saved_cost = INT_MAX;
+    //saved_cost = INT_MAX;
 
     current = *stack_a;
+    //test = *stack_a;
+
     while (stacksize(stack_a) > 3)
     {
         get_cost(stack_a, stack_b);
-        while(current->cost > 1)
+        /*
+        while(test->cost > 1)
         {
-            if(current->cost < saved_cost)
-                saved_cost = current->cost;
-            current = current->next;
-        }   
+            if(test->cost < saved_cost)
+                saved_cost = test->cost;
+            test = test->next;
+        }
+        */
+        index_b = get_index(stack_b, current->target);
         if(current->index < stacksize(stack_a)/2)
         {
-            index_b = get_index(stack_b, current->target);
             // Get both up
             while(current->index > 0 && index_b > 0)
             {
@@ -81,10 +96,10 @@ void sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b)
             }
             // Get it to B
             pb(stack_a, stack_b);
+            printf("Moves Done\n");
         }
         if(current->index >= stacksize(stack_a)/2)
         {   
-            index_b = get_index(stack_b, current->target);
             // Get both up
             while(current->index < stacksize(stack_a) && index_b < stacksize(stack_b))
             {
@@ -105,6 +120,7 @@ void sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b)
                 index_b++;
             }
             pb(stack_a, stack_b);
+            printf("Moves Done\n");
         }
     }
 }
