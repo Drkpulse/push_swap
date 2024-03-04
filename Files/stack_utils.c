@@ -72,3 +72,19 @@ void printstack(Node_Stack **stack)
     }
     printf("\n");
 }
+
+void print_info(Node_Stack **stack)
+{
+    Node_Stack *print;
+    print = *stack;
+    if(!print)
+        return ;
+    while(print)
+    {
+        printf("number: %ld ", print->number);
+        printf("index: %d ", print->index);
+        printf("target: %d ", print->target);
+        printf("cost: %d\n", print->cost);
+        print = print->next;
+    }
+}

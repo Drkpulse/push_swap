@@ -25,6 +25,7 @@ typedef struct Node_Stack{
     int cost;
     int target;
     struct Node_Stack* next;
+    struct Node_Stack* previous;
 } Node_Stack;
 
 
@@ -67,6 +68,8 @@ void    sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b);
 int get_index(Node_Stack **stack, int target);
 void get_cost(Node_Stack **stack_a, Node_Stack **stack_b);
 void return_to_base(Node_Stack **stack_a, Node_Stack **stack_b);
+int catch_cost(Node_Stack **stack_a);
+int get_moves(int index, int target_index);
 
 // Cleaning Functions
 void   free_stack(Node_Stack **stack);
@@ -75,4 +78,8 @@ int     ft_clean(Node_Stack **stack, char **argv, bool argv_f);
 
 // Printing Functions
 void printstack(Node_Stack **stack);
+void print_info(Node_Stack **stack);
+
+// Numbers Funtions
+int ft_abs(int nbr);
 #endif

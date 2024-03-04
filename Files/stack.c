@@ -99,6 +99,7 @@ void    ini_stack(Node_Stack **stack, char **argv)
         }
         new->number = ft_atol(argv[i]);
         new->next = NULL;
+        new->previous = NULL;
         new->cost = 0;
         new->target = 0;
         new->index = 1;
@@ -106,13 +107,14 @@ void    ini_stack(Node_Stack **stack, char **argv)
         {
             *stack = new;
             temp = *stack;
+            new->previous = NULL;
         }
         else
         {
             temp->next = new;
+            new->previous = temp;
             temp = new;
         }
         i++;
     }
-    //free_stack(&temp);
 }
