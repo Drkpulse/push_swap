@@ -19,11 +19,11 @@ void thelastsort(Node_Stack **stack_a, Node_Stack **stack_b)
     sort_until_three(stack_a, stack_b);
     //tiny_sort(stack_a);
     return_to_base(stack_a, stack_b);
-    /*Debugging
+    //Debugging
     printf("a: ");
     printstack(stack_a);
     printf("b: ");
-    printstack(stack_b);*/
+    printstack(stack_b);
     
     
 }
@@ -47,12 +47,6 @@ void sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b)
         while(target->number != current->target)
             target=target->next;
 
-        current->index = get_index(stack_a, current->number);
-        target->index = get_index(stack_b, current->target);
-        if(target->index > stacksize(stack_b)/2)
-            target->median = 1;
-        if(current->index > stacksize(stack_a)/2)
-            current->median = 1;
         //printf("Number: %ld, CMedian: %d, CIndex: %d, Target: %d, TMedian: %d, TIndex: %d, BHead:%ld, Cost: %d,  \n", current->number, current->median, current->index, current->target, target->median, target->index, target->number, current->cost);
         if(!current->median && !target->median)
         {
@@ -89,7 +83,7 @@ void return_to_base(Node_Stack **stack_a, Node_Stack **stack_b)
         
     min = get_lowest(stack_a);
     
-    while(get_index(stack_a, min) != 0)
+    while(!stack_sorted(*stack_a))
     {
         if(get_index(stack_a, min) > stacksize(stack_a)/2)
             rra(stack_a);

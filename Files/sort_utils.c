@@ -55,13 +55,12 @@ void    get_cost(Node_Stack **stack_a, Node_Stack **stack_b)
     current = *stack_a;
     
 
-    while(current && current->index <= stacksize(stack_a)/2)
+    while(current && !current->median)
     {
         current->target = get_target_b(stack_b, current->number);
         current->cost = get_moves(current->index, get_index(stack_b, current->target));
         //printf("Get Cost for Number: %ld, Target: %d with cost %d\n", current->number, current->target, current->cost);
         current = current->next;
-        
     }
 
     while(current)
@@ -70,7 +69,6 @@ void    get_cost(Node_Stack **stack_a, Node_Stack **stack_b)
         current->cost = get_moves(stacksize(stack_a) - 1 - current->index, get_index(stack_b, current->target));
         //printf("Get Cost for Number: %ld, Target: %d with cost %d\n", current->number, current->target, current->cost);
         current = current->next;
-        
     }
     //printf("Costs Updated\n");
 }
@@ -79,16 +77,16 @@ void    update_index(Node_Stack **stack)
 {
     Node_Stack *top;
     int index;
-    int size;
     if(!stack)
         return;
-    size = stacksize(stack)/2;
     index = 0;
     top = *stack;
     while (top)
     {
         top->index = index;
-        if(index <= size)
+        if(index > stacksize(stack)/2)
+            top->median = true;
+        else
             top->median = false;
         index++;
         top = top->next;
