@@ -53,11 +53,12 @@ void    get_cost(Node_Stack **stack_a, Node_Stack **stack_b)
     Node_Stack *current;
 
     current = *stack_a;
-    while(current && get_index(stack_a, current->number) <= stacksize(stack_a)/2)
+    
+
+    while(current && current->index <= stacksize(stack_a)/2)
     {
         current->target = get_target_b(stack_b, current->number);
-        current->cost = get_moves(get_index(stack_a, current->number), get_index(stack_b, current->target));
-        current->index = get_index(stack_a, current->number);
+        current->cost = get_moves(current->index, get_index(stack_b, current->target));
         //printf("Get Cost for Number: %ld, Target: %d with cost %d\n", current->number, current->target, current->cost);
         current = current->next;
         
@@ -66,30 +67,47 @@ void    get_cost(Node_Stack **stack_a, Node_Stack **stack_b)
     while(current)
     {
         current->target = get_target_b(stack_b, current->number);
-        current->cost = get_moves(stacksize(stack_a) - 1 - get_index(stack_a, current->number), get_index(stack_b, current->target));
-        current->index = get_index(stack_a, current->number);
+        current->cost = get_moves(stacksize(stack_a) - 1 - current->index, get_index(stack_b, current->target));
         //printf("Get Cost for Number: %ld, Target: %d with cost %d\n", current->number, current->target, current->cost);
         current = current->next;
         
     }
-    printf("Costs Updated\n");
+    //printf("Costs Updated\n");
+}
+
+void    update_index(Node_Stack **stack)
+{
+    Node_Stack *top;
+    int index;
+    int size;
+    if(!stack)
+        return;
+    size = stacksize(stack)/2;
+    index = 0;
+    top = *stack;
+    while (top)
+    {
+        top->index = index;
+        if(index <= size)
+            top->median = false;
+        index++;
+        top = top->next;
+        
+    }
 }
 
 int get_index(Node_Stack **stack, int target)
 {
     Node_Stack *top;
-    int index;
 
-    index = 0;
     top = *stack;
     while (top)
     {
         if (top->number == target)
-            return (index);
-        index++;
+            return (top->index);
         top = top->next;
     }
-    return (index);
+    return (0);
 }
 
 int catch_cost(Node_Stack **stack_a)
@@ -107,7 +125,7 @@ int catch_cost(Node_Stack **stack_a)
             if(current->cost < saved_cost)
             {
                 saved_cost = current->cost;
-                cheap_index =current->index;
+                cheap_index = current->index;
             }
             current = current->next;
         }

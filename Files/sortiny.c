@@ -34,3 +34,33 @@ void    smallsort(Node_Stack **stack)
         }
     }
 }
+
+void get_push(Node_Stack **stack, int Number, bool median, char stack_name)
+{
+    Node_Stack *current;
+    int debug = 0;
+    current = *stack;
+    
+    while(current->number != Number)
+    {
+        //printf("debug: %d, %ld, %d\n", current->index, current->number, Number);
+        if(stack_name == 'a')
+        {
+            if(!median)
+                ra(stack);
+            else
+                rra(stack);
+        }
+        if(stack_name == 'b')
+        {   
+            if(!median)
+                rb(stack);
+            else
+                rrb(stack);
+         }
+         debug++;
+         current = *stack;
+         //if(debug > 10)
+           // exit(0);
+    }
+}

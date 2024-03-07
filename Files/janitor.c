@@ -29,8 +29,9 @@ void	free_argv(char **argv)
 	i = 0;
 	if (NULL == argv || NULL == *argv)
 		return ;
-	while (argv[++i])
+	while (argv[i++]);
         free(argv[i]);
+    free(argv);
 }
 
 int ft_clean(Node_Stack **stack, char **argv, bool argv_f)

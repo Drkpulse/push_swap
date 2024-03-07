@@ -48,13 +48,13 @@ int stacksize(Node_Stack **stack)
 {
     Node_Stack *current;
     int size;
+    if (!*stack)
+        return (0);
     current = *stack;
     size = 0;
-    if (!current)
-        return (size);
     while (current)
     {
-        size += 1;
+        ++size;
         current = current->next;
     }
     return (size);
@@ -87,4 +87,13 @@ void print_info(Node_Stack **stack)
         printf("cost: %d\n", print->cost);
         print = print->next;
     }
+}
+
+Node_Stack	*find_last_node(Node_Stack *head)
+{
+	if (NULL == head)
+		return (NULL);
+	while (head->next)
+		head = head->next;
+	return (head);
 }

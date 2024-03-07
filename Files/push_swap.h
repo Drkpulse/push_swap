@@ -24,6 +24,7 @@ typedef struct Node_Stack{
     int index;
     int cost;
     int target;
+    bool median;
     struct Node_Stack* next;
     struct Node_Stack* previous;
 } Node_Stack;
@@ -65,11 +66,15 @@ int     get_biggest(Node_Stack **stack);
 int     get_lowest(Node_Stack **stack);
 int stacksize(Node_Stack **stack);
 void    sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b);
+void update_index(Node_Stack **stack);
 int get_index(Node_Stack **stack, int target);
 void get_cost(Node_Stack **stack_a, Node_Stack **stack_b);
 void return_to_base(Node_Stack **stack_a, Node_Stack **stack_b);
 int catch_cost(Node_Stack **stack_a);
 int get_moves(int index, int target_index);
+void    get_return_cost(Node_Stack **stack_a, Node_Stack **stack_b);
+void    get_it_right(Node_Stack **stack);
+void get_push(Node_Stack **stack, int Number, bool median, char stack_name);
 
 // Cleaning Functions
 void   free_stack(Node_Stack **stack);
@@ -82,4 +87,5 @@ void print_info(Node_Stack **stack);
 
 // Numbers Funtions
 int ft_abs(int nbr);
+
 #endif

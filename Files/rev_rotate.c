@@ -14,48 +14,34 @@
 
 void    revrotate(Node_Stack **stack)
 {
-    Node_Stack *current;
-    Node_Stack *last;
-
-    if (*stack && (*stack)->next)
-    {
-        current = *stack;
-        last = NULL;
-
-        while (current->next)
-        {
-            last = current;
-            current = current->next;
-        }
-
-        last->next = NULL;
-        current->next = *stack;
-        *stack = current;
+if (*stack == NULL || (*stack)->next == NULL) {
+        return;
     }
+    Node_Stack* second_last_node = *stack;
+    while (second_last_node->next->next != NULL) {
+        second_last_node = second_last_node->next;
+    }
+    Node_Stack* last_node = second_last_node->next;
+    second_last_node->next = NULL;
+    last_node->next = *stack;
+    *stack = last_node;
+    update_index(stack);
 }
 
 void    rra(Node_Stack **stack)
 {
-    // DEBUG
-    printf("Number: %ld\n", (*stack)->number);
     revrotate(stack);
     printf("rra\n");
 }
 
 void    rrb(Node_Stack **stack)
 {
-    // DEBUG
-    printf("Number: %ld\n", (*stack)->number);
     revrotate(stack);
     printf("rrb\n");
 }
 
 void    rrr(Node_Stack **astack, Node_Stack **bstack)
 {
-    // DEBUG
-    printf("Number: %ld\n", (*astack)->number);
-    // DEBUG
-    printf("Number: %ld\n", (*bstack)->number);
     revrotate(astack);
     revrotate(bstack);
     printf("rrr\n");

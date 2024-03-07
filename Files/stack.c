@@ -103,6 +103,7 @@ void    ini_stack(Node_Stack **stack, char **argv)
         new->cost = 0;
         new->target = 0;
         new->index = 1;
+        new->median = false;
         if (!*stack)
         {
             *stack = new;

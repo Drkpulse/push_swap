@@ -26,12 +26,14 @@ void    swapations(Node_Stack **stack)
 void sa(Node_Stack **stack)
 {
     swapations(stack);
+    update_index(stack);
     printf("sa\n");
 }
 
 void sb(Node_Stack **stack)
 {
     swapations(stack);
+    update_index(stack);
     printf("sb\n");
 }
 
@@ -39,5 +41,7 @@ void ss(Node_Stack **astack, Node_Stack **bstack)
 {
     swapations(astack);
     swapations(bstack);
+    update_index(astack);
+    update_index(bstack);
     printf("ss\n"); 
 }

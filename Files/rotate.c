@@ -14,47 +14,33 @@
 
 void    rotations(Node_Stack **stack)
 {
-    long temp;
-    Node_Stack *current;
-    if (*stack && (*stack)->next)
-    {
-        current = *stack;
-
-        temp = current->number;
-
-        while (current->next)
-        {
-            current->number = current->next->number;
-            current = current->next;
-        }
-
-        current->number = temp;
+   if (*stack == NULL || (*stack)->next == NULL)
+        return;
+    Node_Stack* last_node = *stack;
+    while (last_node->next != NULL) {
+        last_node = last_node->next;
     }
+    last_node->next = *stack;
+    *stack = (*stack)->next;
+    last_node->next->next = NULL;
+    update_index(stack);
 }
 
 void ra(Node_Stack **stack)
 {
-     // DEBUG
-    printf("Number: %ld\n", (*stack)->number);
     rotations(stack);
     printf("ra\n");
 }
 
 void rb(Node_Stack **stack)
 {
-    // DEBUG
-    printf("Number: %ld\n", (*stack)->number);
     rotations(stack);
     printf("rb\n");
 }
 
 void rr(Node_Stack **astack, Node_Stack **bstack)
 {
-    // DEBUG
-    printf("Number: %ld\n", (*astack)->number);
-    // DEBUG
-    printf("Number: %ld\n", (*bstack)->number);
     rotations(astack);
     rotations(bstack);
     printf("rr\n");
- }   
+ }
