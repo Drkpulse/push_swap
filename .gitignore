@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 # Temporary Make Files
 *.o
+Files/push_swap
