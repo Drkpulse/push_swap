@@ -16,7 +16,8 @@ void thelastsort(Node_Stack **stack_a, Node_Stack **stack_b)
 {
     pb(stack_a, stack_b);
     pb(stack_a, stack_b);
-    sort_until_three(stack_a, stack_b);
+    //sort_until_three(stack_a, stack_b);
+    sort_node_three(stack_a, stack_b);
     //tiny_sort(stack_a);
     return_to_base(stack_a, stack_b);
     //Debugging

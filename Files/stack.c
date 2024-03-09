@@ -100,6 +100,7 @@ void    ini_stack(Node_Stack **stack, char **argv)
         new->number = ft_atol(argv[i]);
         new->next = NULL;
         new->previous = NULL;
+        new->target_node = NULL;
         new->cost = 0;
         new->target = 0;
         new->index = 1;

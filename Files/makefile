@@ -21,7 +21,7 @@ NAME	= push_swap
 LIBFT		= ./libft/libft.a
 
 #Sources#
-SRCS = ./main.c ./push.c ./rev_rotate.c ./rotate.c ./sortiny.c ./stack.c ./swap.c ./janitor.c ./bigsort.c ./stack_utils.c ./sort_utils.c ./sort_utils2.c
+SRCS = ./main.c ./push.c ./rev_rotate.c ./rotate.c ./sortiny.c ./stack.c ./swap.c ./janitor.c ./bigsort.c ./stack_utils.c ./sort_utils.c ./sort_utils2.c ./inventions.c
 
 OBJS = $(SRCS:.c=.o)
 
