@@ -108,17 +108,20 @@ int get_index(Node_Stack **stack, int target)
     return (0);
 }
 
-int catch_cost(Node_Stack **stack_a)
+int catch_cost(Node_Stack **stack)
 {
     Node_Stack *current;
     int saved_cost;
     int cheap_index;
+
+    current = *stack;
     saved_cost = INT_MAX;
     cheap_index = 0;
 
-    current = *stack_a;
+    if (current == NULL)
+        return -1;
 
-    while(current->cost >= 0 && current->next)
+    while (current != NULL && current->cost >= 0)
         {
             if(current->cost < saved_cost)
             {
