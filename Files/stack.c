@@ -34,14 +34,16 @@ void    validator(Node_Stack **stack, char **argv)
 	{
         if (syntax_error(argv[i]))
         {
-            printf("Error Syntax\n");
+            write(2, "Error\n", 6);
+            free_argv(argv);
             exit(1);
         }
         i++;
     }
     if (duplicates(argv))
         {
-            printf("Error Duplicate\n");
+            write(2, "Error\n", 6);
+            free_argv(argv);
             exit(1);
         }
     ini_stack(stack, argv);

@@ -12,33 +12,41 @@
 
 #include "push_swap.h"
 
-void   free_stack(Node_Stack **stack)
-{
-    if (!*stack)
-        return;
-    if ((*stack)->next)
-        free_stack(&(*stack)->next);
-    free(*stack);
+void free_stack(Node_Stack **stack) {
+    Node_Stack *current;
+    Node_Stack *next;
+
+    current = *stack;
+
+    while (current) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
     *stack = NULL;
 }
 
-void	free_argv(char **argv)
-{
-	int	i;
+void free_argv(char **argv) {
+    int i;
 
-	i = 0;
-	if (NULL == argv || NULL == *argv)
-		return ;
-	while (argv[i++]);
+    i = 0;
+
+    if (NULL == argv || NULL == *argv)
+        return;
+    while (argv[i]) {
         free(argv[i]);
+        i++;
+    }
     free(argv);
 }
 
-int ft_clean(Node_Stack **stack, char **argv, bool argv_f)
+
+void ft_clean(Node_Stack **stack, char **argv, bool argv_f)
 {
     if(argv_f)
         free_argv(argv);
-    free_stack(stack);
+    if(stack)
+        free_stack(stack);
     printf("Error\n");
-    return (1);
+    exit(0);
 }

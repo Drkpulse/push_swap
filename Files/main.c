@@ -31,7 +31,7 @@ int	main(int argc, char** argv)
 		argv = ft_split(argv[1], ' ');
 		argv_f = 1;
 		i = 0;
-	}	
+	}
 	validator(&a, argv + i);
 	if (stack_sorted(a))
 		return (0);
@@ -42,16 +42,8 @@ int	main(int argc, char** argv)
 
 	free_stack(&a);
 	free_stack(&b);
-	
 	if(argv_f)
 		free_argv(argv);
-	
-
-	// Small Sort 5 Numbers
-
-	// Sort 100 Numbers
-
-	// Big Sort 100+ Numbers
 
 	return(0);
 }

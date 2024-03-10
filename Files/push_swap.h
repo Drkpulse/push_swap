@@ -61,46 +61,44 @@ void    pb(Node_Stack **astack, Node_Stack **bstack);
 // Sorting Functions
 void    tiny_sort(Node_Stack **stack);
 void    thelastsort(Node_Stack **stack_a, Node_Stack **stack_b);
-int get_target_a(Node_Stack **stack_a, int number);
-int     get_target_b(Node_Stack **stack_b, int number);
-int     get_biggest(Node_Stack **stack);
-int     get_lowest(Node_Stack **stack);
+
+
 int stacksize(Node_Stack **stack);
-void    sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b);
+
 void update_index(Node_Stack **stack);
-int get_index(Node_Stack **stack, int target);
-void get_cost(Node_Stack **stack_a, Node_Stack **stack_b);
-void return_to_base(Node_Stack **stack_a, Node_Stack **stack_b);
+
+
 int catch_cost(Node_Stack **stack_a);
-int get_moves(int index, int target_index);
+
 void    get_return_cost(Node_Stack **stack_a, Node_Stack **stack_b);
-void    get_it_right(Node_Stack **stack);
+
 void get_push(Node_Stack **stack, int Number, bool median, char stack_name);
 
 // Cleaning Functions
 void   free_stack(Node_Stack **stack);
 void	free_argv(char **argv);
-int     ft_clean(Node_Stack **stack, char **argv, bool argv_f);
+void ft_clean(Node_Stack **stack, char **argv, bool argv_f);
 
 // Printing Functions
 void printstack(Node_Stack **stack);
 void print_info(Node_Stack **stack);
 
 // Numbers Funtions
-int ft_abs(int nbr);
+
 
 // Testing Functions
 Node_Stack* get_node_b(Node_Stack **stack_b, int number);
+Node_Stack* get_node_a(Node_Stack **stack_b, int number);
 void get_node_push(Node_Stack **stack, Node_Stack **target_node, char stack_name);
 int get_more_moves(int index, bool median, int target_index, bool tmedian, int size_a, int size_b);
 void    get_node_cost(Node_Stack **stack_a, Node_Stack **stack_b, char stack);
 void sort_node_three(Node_Stack **stack_a, Node_Stack **stack_b);
 Node_Stack* get_biggest_node(Node_Stack **stack);
-Node_Stack* get_node_a(Node_Stack **stack_b, int number);
+
 Node_Stack* get_lowest_node(Node_Stack **stack);
-void    return_to_base(Node_Stack **stack_a, Node_Stack **stack_b);
+
 void get_it_together(Node_Stack **stack);
-void    return_to_node(Node_Stack **stack_a, Node_Stack **stack_b);
+
 
 
 #endif
