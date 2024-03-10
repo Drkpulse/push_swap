@@ -30,15 +30,15 @@ int stacksize(Node_Stack **stack)
 
 void printstack(Node_Stack **stack)
 {
-    Node_Stack *current;
+	Node_Stack *current
 
-    current = *stack;
-    while (current)
-    {
-        printf("%ld ", current->number);
-        current = current->next;
-    }
-    printf("\n");
+	current = *stack;
+	while (current)
+	{
+		printf("%ld ", current->number);
+		current = current->next;
+	}
+	printf("\n");
 }
 
 void print_info(Node_Stack **stack)

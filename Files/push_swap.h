@@ -90,8 +90,8 @@ void print_info(Node_Stack **stack);
 Node_Stack* get_node_b(Node_Stack **stack_b, int number);
 Node_Stack* get_node_a(Node_Stack **stack_b, int number);
 void get_node_push(Node_Stack **stack, Node_Stack **target_node, char stack_name);
-int get_more_moves(int index, bool median, int target_index, bool tmedian, int size_a, int size_b);
-void    get_node_cost(Node_Stack **stack_a, Node_Stack **stack_b, char stack);
+int get_more_moves(int index, bool median, int target_index, bool tmedian);
+void    get_node_cost(Node_Stack **stack_a, Node_Stack **stack_b);
 void sort_node_three(Node_Stack **stack_a, Node_Stack **stack_b);
 Node_Stack* get_biggest_node(Node_Stack **stack);
 

@@ -20,7 +20,7 @@ void thelastsort(Node_Stack **stack_a, Node_Stack **stack_b)
     tiny_sort(stack_a);
     while(stacksize(stack_b) > 0)
         pa(stack_b, stack_a);
-    get_it_together(stack_a);   
+    get_it_together(stack_a);
     //Debugging
     printf("a: ");
     printstack(stack_a);

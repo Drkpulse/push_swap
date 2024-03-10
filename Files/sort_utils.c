@@ -29,7 +29,7 @@ void    update_index(Node_Stack **stack)
             top->median = false;
         index++;
         top = top->next;
-        
+
     }
 }
 

@@ -41,23 +41,19 @@ void	sort_node_three(Node_Stack **stack_a, Node_Stack **stack_b)
 void	get_node_cost(Node_Stack **stack_a, Node_Stack **stack_b)
 {
 	Node_Stack	*current;
-	int			index;
-	int			target_index;
+	int			size;
+	int			tsize;
 
 	current = *stack_a;
+	size = stacksize(stack_a);
+	tsize = stacksize(stack_b);
 	while (current != NULL)
 	{
 		current->target_node = get_node_b(stack_b, current->number);
 		if (current->target_node != NULL)
 		{
-			index = current->index;
-			target_index = current->target_node->index;
-			if (current->median)
-				index = stacksize(stack_a) - 1 - current->index;
-			if (current->target_node->median)
-				target_index = stacksize(stack_b) - 1 - current->target_node->index;
 			current->target = current->target_node->number;
-			current->cost = get_more_moves(index, current->median, target_index, current->target_node->median);
+			current->cost = get_more_moves(current->index, current->median, current->target_node->index, current->target_node->median, size, tsize);
 		}
 		current = current->next;
 	}
@@ -128,8 +124,12 @@ Node_Stack	*get_biggest_node(Node_Stack **stack)
 	return (biggest_node);
 }
 
-int	get_more_moves(int index, bool median, int target_index, bool tmedian)
+int	get_more_moves(int index, bool median, int target_index, bool tmedian, int size_a, int size_b)
 {
+	if (median)
+		index = size_a - 1 - index;
+	if (tmedian)
+		target_index = size_b - 1 - target_index;
 	if ((median && tmedian) || (!median && !tmedian))
 	{
 		if (index > target_index)
