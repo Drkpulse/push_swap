@@ -100,6 +100,7 @@ Node_Stack* get_node_a(Node_Stack **stack_b, int number);
 Node_Stack* get_lowest_node(Node_Stack **stack);
 void    return_to_base(Node_Stack **stack_a, Node_Stack **stack_b);
 void get_it_together(Node_Stack **stack);
+void    return_to_node(Node_Stack **stack_a, Node_Stack **stack_b);
 
 
 #endif

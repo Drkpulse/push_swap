@@ -18,8 +18,11 @@ void thelastsort(Node_Stack **stack_a, Node_Stack **stack_b)
     pb(stack_a, stack_b);
     //sort_until_three(stack_a, stack_b);
     sort_node_three(stack_a, stack_b);
-    //tiny_sort(stack_a);
-    return_to_base(stack_a, stack_b);
+    tiny_sort(stack_a);
+    //return_to_base(stack_a, stack_b);
+    //return_to_node(stack_a, stack_b);
+    while(stacksize(stack_b) > 0)
+        pa(stack_b, stack_a);
     get_it_together(stack_a);   
     //Debugging
     printf("a: ");
@@ -75,14 +78,13 @@ void sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b)
 }
 
 
-/* void return_to_base(Node_Stack **stack_a, Node_Stack **stack_b)
+void return_to_base(Node_Stack **stack_a, Node_Stack **stack_b)
 {
     int min;
     while(stacksize(stack_b) > 0)
     {
         pa(stack_b, stack_a);
     }
-        
     min = get_lowest(stack_a);
     
     while(!stack_sorted(*stack_a))
@@ -92,4 +94,4 @@ void sort_until_three(Node_Stack **stack_a, Node_Stack **stack_b)
         else
             ra(stack_a);
     }
-} */
+}

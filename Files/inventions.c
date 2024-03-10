@@ -5,9 +5,7 @@ void sort_node_three(Node_Stack **stack_a, Node_Stack **stack_b)
     Node_Stack *current;
     if (*stack_a == NULL)
         return;
-    int targetSize = stacksize(stack_a) / 2;
-    int currentSize = stacksize(stack_a) - 1;
-    while (currentSize > targetSize)   
+    while (stacksize(stack_a))   
     {
         current = *stack_a;
 
@@ -40,26 +38,27 @@ void sort_node_three(Node_Stack **stack_a, Node_Stack **stack_b)
         get_node_push(stack_a, &current, 'a');
         get_node_push(stack_b, &current->target_node, 'b');
         pb(stack_a, stack_b);
-        currentSize = stacksize(stack_a) - 1;
     }
 }
 
 void get_node_cost(Node_Stack **stack_a, Node_Stack **stack_b, char stack)
 {
     Node_Stack *current;
-    Node_Stack *target;
-
+    int size;
+    int tsize;
     if (stack == 'a')
     {
         current = *stack_a;
-        target = *stack_b;
+        size = stacksize(stack_a);
+        tsize = stacksize(stack_b);
         //printf("Calculating costs for stack A:\n");
     }
     else
     {
         current = *stack_b;
-        target = *stack_a;
-       // printf("Calculating costs for stack B:\n");
+        size = stacksize(stack_b);
+        tsize = stacksize(stack_a);
+       //printf("Calculating costs for stack B:\n");
     }
 
     while (current != NULL)
@@ -72,16 +71,16 @@ void get_node_cost(Node_Stack **stack_a, Node_Stack **stack_b, char stack)
         if (current->target_node != NULL)
         {
             current->target = current->target_node->number;
-            current->cost = get_more_moves(current->index, current->median, current->target_node->index, current->target_node->median, stacksize(&current), stacksize(&target));
+            current->cost = get_more_moves(current->index, current->median, current->target_node->index, current->target_node->median, size, tsize);
 
-                /* printf("Node Cost for Number: %ld, Index: %d, Target: %ld - %d with cost %d\n",
-                   current->number, current->index, current->target_node->number, current->target, current->cost); */
+/*                 printf("Node Cost for Number: %ld, Index: %d, Target: %ld - %d with cost %d\n", 
+                current->number, current->index, current->target_node->number, current->target, current->cost); */
         }
-/*         else
+       else
         {
             printf("Warning: Target node not found for Number: %ld\n", current->number);
             // Handle the case when the target node is not found (e.g., set default values)
-        } */
+        }
 
         current = current->next;
     }
@@ -187,6 +186,7 @@ if(median)
         index = size_a - 1 - index;
 if(tmedian)
         target_index = size_b - 1 - target_index;
+//printf("Index: %d, Median: %d, Target Index: %d, Target Median: %d, Size A: %d, Size B: %d\n", index, median, target_index, tmedian, size_a, size_b);
 if((median && tmedian) || (!median && !tmedian))
     {
         if(index > target_index)
@@ -234,7 +234,7 @@ void get_node_push(Node_Stack **stack, Node_Stack **target_node, char stack_name
 }
 
 
-void    return_to_base(Node_Stack **stack_a, Node_Stack **stack_b)
+void    return_to_node(Node_Stack **stack_a, Node_Stack **stack_b)
 {
     Node_Stack *current;
     while (stacksize(stack_b) > 0)
@@ -245,7 +245,7 @@ void    return_to_base(Node_Stack **stack_a, Node_Stack **stack_b)
         update_index(stack_a);
         get_node_cost(stack_a, stack_b, 'b');
         
-        while(current->index != catch_cost(stack_a))
+        while(current->index != catch_cost(stack_b))
             current=current->next;
 
         //printf("Number: %ld, CMedian: %d, CIndex: %d, Target: %d, TMedian: %d, TIndex: %d, BHead:%ld, Cost: %d,  \n", current->number, current->median, current->index, current->target, target->median, target->index, target->number, current->cost);
