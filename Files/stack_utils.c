@@ -30,7 +30,7 @@ int stacksize(Node_Stack **stack)
 
 void printstack(Node_Stack **stack)
 {
-	Node_Stack *current
+	Node_Stack *current;
 
 	current = *stack;
 	while (current)
