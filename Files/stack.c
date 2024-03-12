@@ -12,41 +12,30 @@
 
 #include "push_swap.h"
 
-bool    stack_sorted(Node_Stack *stack)
+int	validator(t_Node **stack, char **argv, int argc)
 {
-	if (!stack)
-		return (1);
-	while (stack->next)
+	int	i;
+	int	flag;
+
+	flag = 1;
+	if (argc == 2)
 	{
-		if (stack->number > stack->next->number)
-			return (false);
-		stack = stack->next;
+		argv = ft_split(argv[1], ' ');
+		flag = 0;
 	}
-	return (true);
-}
-
-void    validator(Node_Stack **stack, char **argv)
-{
-    int i;
-
-    i = 0;
-    while (argv[i])
+	i = flag;
+	while (argv[i])
 	{
-        if (syntax_error(argv[i]))
-        {
-            write(2, "Error\n", 6);
-            free_argv(argv);
-            exit(1);
-        }
-        i++;
-    }
-    if (duplicates(argv))
-        {
-            write(2, "Error\n", 6);
-            free_argv(argv);
-            exit(1);
-        }
-    ini_stack(stack, argv);
+		if (argv[i] == NULL || syntax_error(argv[i]))
+			catch_error(stack, NULL, argv, flag);
+		i++;
+	}
+	if (duplicates(argv))
+		catch_error(stack, NULL, argv, flag);
+	ini_stack(stack, argv);
+	if (flag == 0)
+		free_argv(argv);
+	return (flag);
 }
 
 bool	syntax_error(char *str_nbr)
@@ -67,58 +56,62 @@ bool	syntax_error(char *str_nbr)
 	return (false);
 }
 
-bool    duplicates(char **argv)
+bool	duplicates(char **argv)
 {
-    int i = 0;
-    while (argv[i]) {
-        int j = i + 1;
-        while (argv[j]) {
-            if (strcmp(argv[i], argv[j]) == 0) {
-                return (true);
-            }
-            j++;
-        }
-        i++;
-    }
-    return (false);
+	int	i;
+	int	j;
+
+	i = 0;
+	while (argv[i])
+	{
+		j = i + 1;
+		while (argv[j])
+		{
+			if (strcmp(argv[i], argv[j]) == 0)
+				return (true);
+			j++;
+		}
+		i++;
+	}
+	return (false);
 }
 
-
-void    ini_stack(Node_Stack **stack, char **argv)
+void	ini_stack(t_Node **stack, char **argv)
 {
-    int i;
-    Node_Stack *new;
-    Node_Stack *temp;
+	int			i;
+	t_Node		*new;
+	t_Node		*temp;
 
-    i = 0;
-    while (argv[i])
-    {
-        new = (Node_Stack *)malloc(sizeof(Node_Stack));
-        if (!new)
-        {
-            printf("Error malloc\n");
-            exit(1);
-        }
-        new->number = ft_atol(argv[i]);
-        new->next = NULL;
-        new->previous = NULL;
-        new->target_node = NULL;
-        new->cost = 0;
-        new->target = 0;
-        new->index = 1;
-        new->median = false;
-        if (!*stack)
-        {
-            *stack = new;
-            temp = *stack;
-            new->previous = NULL;
-        }
-        else
-        {
-            temp->next = new;
-            new->previous = temp;
-            temp = new;
-        }
-        i++;
-    }
+	i = 0;
+	while (argv[i])
+	{
+		new = (t_Node *)malloc(sizeof(t_Node));
+		if (!new)
+			catch_error(stack, NULL, argv, 0);
+		new->number = ft_atol(argv[i]);
+		ini_node(&new);
+		if (!*stack)
+			*stack = new;
+		else
+		{
+			temp = *stack;
+			while (temp->next)
+				temp = temp->next;
+			temp->next = new;
+		}
+		i++;
+	}
+}
+
+void	ini_node(t_Node **stack)
+{
+	t_Node	*temp;
+
+	temp = *stack;
+	temp->next = NULL;
+	temp->target_node = NULL;
+	temp->cost = 0;
+	temp->target = 0;
+	temp->index = 1;
+	temp->median = false;
 }

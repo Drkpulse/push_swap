@@ -10,37 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void    rotations(Node_Stack **stack)
+void	rotations(t_Node **stack)
 {
-   if (*stack == NULL || (*stack)->next == NULL)
-        return;
-    Node_Stack* last_node = *stack;
-    while (last_node->next != NULL) {
-        last_node = last_node->next;
-    }
-    last_node->next = *stack;
-    *stack = (*stack)->next;
-    last_node->next->next = NULL;
-    update_index(stack);
+	t_Node	*last_node;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
+	last_node = *stack;
+	while (last_node->next != NULL)
+		last_node = last_node->next;
+	last_node->next = *stack;
+	*stack = (*stack)->next;
+	last_node->next->next = NULL;
+	update_index(stack);
 }
 
-void ra(Node_Stack **stack)
+void	ra(t_Node **stack)
 {
-    rotations(stack);
-    printf("ra\n");
+	rotations(stack);
+	printf("ra\n");
 }
 
-void rb(Node_Stack **stack)
+void	rb(t_Node **stack)
 {
-    rotations(stack);
-    printf("rb\n");
+	rotations(stack);
+	printf("rb\n");
 }
 
-void rr(Node_Stack **astack, Node_Stack **bstack)
+void	rr(t_Node **astack, t_Node **bstack)
 {
-    rotations(astack);
-    rotations(bstack);
-    printf("rr\n");
- }
+	rotations(astack);
+	rotations(bstack);
+	printf("rr\n");
+}

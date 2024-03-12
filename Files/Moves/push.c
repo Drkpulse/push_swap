@@ -10,31 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void    push(Node_Stack **frststack, Node_Stack **lststack)
+void	push(t_Node **frststack, t_Node **lststack)
 {
-    Node_Stack  *tmp;
-    if (*frststack == NULL)
-        return;
+	t_Node	*tmp;
 
-    tmp = *frststack;
-    *frststack = (*frststack)->next;
-    tmp->next = *lststack;
-    *lststack = tmp;
-
-    update_index(frststack);
-    update_index(lststack);
+	if (*frststack == NULL)
+		return ;
+	tmp = *frststack;
+	*frststack = (*frststack)->next;
+	tmp->next = *lststack;
+	*lststack = tmp;
+	update_index(frststack);
+	update_index(lststack);
 }
 
-void    pa(Node_Stack **bstack, Node_Stack **astack)
-{ 
-    push(bstack, astack);
-    printf("pa\n");    
+void	pa(t_Node **bstack, t_Node **astack)
+{
+	push(bstack, astack);
+	printf("pa\n");
 }
 
-void    pb(Node_Stack **astack, Node_Stack **bstack)
+void	pb(t_Node **astack, t_Node **bstack)
 {
-    push(astack, bstack);
-    printf("pb\n");
+	push(astack, bstack);
+	printf("pb\n");
 }

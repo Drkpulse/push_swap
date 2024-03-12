@@ -20,18 +20,16 @@ LIBFT		= ./libft/libft.a
 
 # Push_Swap Sources
 SRCS = 	./main.c \
-		./push.c \
-		./rev_rotate.c \
-		./rotate.c \
-		./sortiny.c \
 		./stack.c \
-		./swap.c \
 		./janitor.c \
-		./bigsort.c \
-		./stack_utils.c \
+		./sorting.c \
 		./sort_utils.c \
+		./stack_utils.c \
 		./sort_utils2.c \
-		./inventions.c
+		./moves/push.c \
+		./moves/swap.c \
+		./moves/rotate.c \
+		./moves/rev_rotate.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -52,22 +50,22 @@ RESET				=	\033[0m
 
 # RULES
 all: $(LIBFT) $(NAME)
-	@printf "$(BLUE)==> $(CYAN)Push_swap compiled ✅\n\n$(RESET)"
+	@printf "$(PURPLE)==> $(GREEN)🚀 Push_swap compiled \n\n$(RESET)"
 
 libft: $(LIBFT)
 
 clean:
 	${MAKE} clean -C ./libft
 	$(RM) $(OBJS)
-	@printf "\n$(BLUE)==> $(RED)Cleaned Temp Push_swap 🗑️\n$(RESET)"
+	@printf "\n$(PURPLE)==> $(RED)🧹 Cleaned Temp Push_swap \n$(RESET)"
 	
 fclean: clean
 	${MAKE} fclean -C ./libft
-	$(RM) $(NAME)
-	@printf "\n$(BLUE)==> $(RED)Removed Push_swap 🗑️\n$(RESET)"
+	$(RM) $(NAME)	
+	@printf "\n$(PURPLE)==> $(RED)🗑️ Removed Push_swap \n$(RESET)"
 
 re: fclean all
-	@printf "$(BLUE)==> $(CYAN)Push_swap recompiled 🔄\n$(RESET)"
+	@printf "$(PURPLE)==> $(PURPLE)🪄 Push_swap recompiled \n$(RESET)"
 
 # Full Program
 $(NAME): $(OBJS)

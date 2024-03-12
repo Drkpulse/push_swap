@@ -12,41 +12,50 @@
 
 #include "push_swap.h"
 
-void free_stack(Node_Stack **stack) {
-    Node_Stack *current;
-    Node_Stack *next;
-
-    current = *stack;
-
-    while (current) {
-        next = current->next;
-        free(current);
-        current = next;
-    }
-    *stack = NULL;
-}
-
-void free_argv(char **argv) {
-    int i;
-
-    i = 0;
-
-    if (NULL == argv || NULL == *argv)
-        return;
-    while (argv[i]) {
-        free(argv[i]);
-        i++;
-    }
-    free(argv);
-}
-
-
-void ft_clean(Node_Stack **stack, char **argv, bool argv_f)
+void	free_stack(t_Node **stack)
 {
-    if(argv_f)
-        free_argv(argv);
-    if(stack)
-        free_stack(stack);
-    printf("Error\n");
-    exit(0);
+	t_Node	*current;
+	t_Node	*next;
+
+	current = *stack;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*stack = NULL;
+}
+
+void	free_argv(char **arr)
+{
+	int	i;
+
+	i = 0;
+	if (arr == NULL || *arr == NULL)
+		return ;
+	while (arr[i])
+	{
+		free(arr[i]);
+		arr[i] = NULL;
+		i++;
+	}
+	free(arr);
+}
+
+void	ft_clean(t_Node **a, t_Node **b, char **argv, bool argv_f)
+{
+	if (!argv_f)
+		free_argv(argv);
+	if (a)
+		free_stack(a);
+	if (b)
+		free_stack(b);
+	exit(0);
+}
+
+void	catch_error(t_Node **a, t_Node **b, char **argv, bool argv_f)
+{
+	write(2, "\033[0;31mError\033[0m\n", 17);
+	ft_clean(a, b, argv, argv_f);
 }

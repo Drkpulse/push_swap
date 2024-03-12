@@ -12,25 +12,39 @@
 
 #include "push_swap.h"
 
-int stacksize(Node_Stack **stack)
+int	stacksize(t_Node **stack)
 {
-    Node_Stack *current;
-    int size;
-    if (!*stack)
-        return (0);
-    current = *stack;
-    size = 0;
-    while (current)
-    {
-        ++size;
-        current = current->next;
-    }
-    return (size);
+	t_Node		*current;
+	int			size;
+
+	if (!*stack)
+		return (0);
+	current = *stack;
+	size = 0;
+	while (current)
+	{
+		++size;
+		current = current->next;
+	}
+	return (size);
 }
 
-void printstack(Node_Stack **stack)
+bool	stack_sorted(t_Node *stack)
 {
-	Node_Stack *current;
+	if (!stack)
+		return (1);
+	while (stack->next)
+	{
+		if (stack->number > stack->next->number)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
+}
+
+void	printstack(t_Node **stack)
+{
+	t_Node	*current;
 
 	current = *stack;
 	while (current)
@@ -41,18 +55,19 @@ void printstack(Node_Stack **stack)
 	printf("\n");
 }
 
-void print_info(Node_Stack **stack)
+void	print_info(t_Node **stack)
 {
-    Node_Stack *print;
-    print = *stack;
-    if(!print)
-        return ;
-    while(print)
-    {
-        printf("number: %ld ", print->number);
-        printf("index: %d ", print->index);
-        printf("target: %d ", print->target);
-        printf("cost: %d\n", print->cost);
-        print = print->next;
-    }
+	t_Node	*print;
+
+	print = *stack;
+	if (!print)
+		return ;
+	while (print)
+	{
+		printf("number: %ld ", print->number);
+		printf("index: %d ", print->index);
+		printf("target: %d ", print->target);
+		printf("cost: %d\n", print->cost);
+		print = print->next;
+	}
 }

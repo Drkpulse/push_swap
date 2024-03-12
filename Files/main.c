@@ -12,38 +12,24 @@
 
 #include "push_swap.h"
 
-int	main(int argc, char** argv)
+int	main(int argc, char **argv)
 {
-	Node_Stack	*a;
-	Node_Stack	*b;
-	int i;
-	int argv_f;
+	t_Node		*stack_a;
+	t_Node		*stack_b;
+	int			argv_f;
 
-	a = NULL;
-	b = NULL;
-	i = 1;
+	stack_a = NULL;
+	stack_b = NULL;
 	argv_f = 0;
-
-	if (argc == 1 || (2 == argc && !argv[1][0]))
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (0);
-	else if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' ');
-		argv_f = 1;
-		i = 0;
-	}
-	validator(&a, argv + i);
-	if (stack_sorted(a))
-		return (0);
-	if (stacksize(&a) == 3)
-		tiny_sort(&a);
+	argv_f = validator(&stack_a, argv, argc);
+	if (stack_sorted(stack_a))
+		ft_clean(&stack_a, NULL, argv, argv_f);
+	if (stacksize(&stack_a) == 3)
+		tiny_sort(&stack_a);
 	else
-		thelastsort(&a, &b);
-
-	free_stack(&a);
-	free_stack(&b);
-	if(argv_f)
-		free_argv(argv);
-
-	return(0);
+		thelastsort(&stack_a, &stack_b);
+	ft_clean(&stack_a, &stack_b, argv, argv_f);
+	return (0);
 }

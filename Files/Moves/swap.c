@@ -10,38 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void    swapations(Node_Stack **stack)
+void	swapations(t_Node **stack)
 {
-    long temp;
-    if (*stack && (*stack)->next)
-    {
-        temp = (*stack)->number;
-        (*stack)->number = (*stack)->next->number;
-        (*stack)->next->number = temp;
-    }
+	long	temp;
+
+	if (*stack && (*stack)->next)
+	{
+		temp = (*stack)->number;
+		(*stack)->number = (*stack)->next->number;
+		(*stack)->next->number = temp;
+	}
 }
 
-void sa(Node_Stack **stack)
+void	sa(t_Node **stack)
 {
-    swapations(stack);
-    update_index(stack);
-    printf("sa\n");
+	swapations(stack);
+	update_index(stack);
+	printf("sa\n");
 }
 
-void sb(Node_Stack **stack)
+void	sb(t_Node **stack)
 {
-    swapations(stack);
-    update_index(stack);
-    printf("sb\n");
+	swapations(stack);
+	update_index(stack);
+	printf("sb\n");
 }
 
-void ss(Node_Stack **astack, Node_Stack **bstack)
+void	ss(t_Node **astack, t_Node **bstack)
 {
-    swapations(astack);
-    swapations(bstack);
-    update_index(astack);
-    update_index(bstack);
-    printf("ss\n"); 
+	swapations(astack);
+	swapations(bstack);
+	update_index(astack);
+	update_index(bstack);
+	printf("ss\n");
 }
