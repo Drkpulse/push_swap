@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "include/push_swap.h"
 
 void	thelastsort(t_Node **stack_a, t_Node **stack_b)
 {
