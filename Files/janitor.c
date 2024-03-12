@@ -43,9 +43,10 @@ void	free_argv(char **arr)
 	free(arr);
 }
 
-void	ft_clean(t_Node **a, t_Node **b, char **argv, bool argv_f)
+void	ft_clean(t_Node **a, t_Node **b, char **argv)
 {
-	if (!argv_f)
+	argv = NULL;
+	if (argv)
 		free_argv(argv);
 	if (a)
 		free_stack(a);
@@ -57,5 +58,7 @@ void	ft_clean(t_Node **a, t_Node **b, char **argv, bool argv_f)
 void	catch_error(t_Node **a, t_Node **b, char **argv, bool argv_f)
 {
 	write(2, "\033[0;31mError\033[0m\n", 17);
-	ft_clean(a, b, argv, argv_f);
+	if (argv_f)
+		free_argv(argv);
+	ft_clean(a, b, argv);
 }

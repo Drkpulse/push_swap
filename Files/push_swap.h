@@ -78,8 +78,7 @@ void		get_it_together(t_Node **stack);
 // Cleaning Functions
 void		free_stack(t_Node **stack);
 void		free_argv(char **argv);
-void		ft_clean(t_Node **stack_a, t_Node **stack_b, char **argv,
-				bool argv_f);
+void		ft_clean(t_Node **stack_a, t_Node **stack_b, char **argv);
 void		catch_error(t_Node **stack_a, t_Node **stack_b, char **argv,
 				bool argv_f);
 

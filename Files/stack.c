@@ -27,11 +27,11 @@ int	validator(t_Node **stack, char **argv, int argc)
 	while (argv[i])
 	{
 		if (argv[i] == NULL || syntax_error(argv[i]))
-			catch_error(stack, NULL, argv, flag);
+			catch_error(NULL, NULL, argv, !flag);
 		i++;
 	}
 	if (duplicates(argv))
-		catch_error(stack, NULL, argv, flag);
+		catch_error(NULL, NULL, argv, !flag);
 	ini_stack(stack, argv);
 	if (flag == 0)
 		free_argv(argv);

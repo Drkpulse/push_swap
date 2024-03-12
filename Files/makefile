@@ -58,23 +58,27 @@ clean:
 	${MAKE} clean -C ./libft
 	$(RM) $(OBJS)
 	@printf "\n$(PURPLE)==> $(RED)🧹 Cleaned Temp Push_swap \n$(RESET)"
-	
+
 fclean: clean
 	${MAKE} fclean -C ./libft
-	$(RM) $(NAME)	
+	$(RM) $(NAME)
 	@printf "\n$(PURPLE)==> $(RED)🗑️ Removed Push_swap \n$(RESET)"
 
 re: fclean all
 	@printf "$(PURPLE)==> $(PURPLE)🪄 Push_swap recompiled \n$(RESET)"
 
+debug: all clean
+
+	@printf "$(PURPLE)==> $(GREEN)🚀 Push_swap compiled for debug \n\n$(RESET)"
+
 # Full Program
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./libft -lft 
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./libft -lft
 
 # BONUS
 #
 #$(SERVER_BONUS): $(OBJS_BNS_SR)
-#	$(CC) $(CFLAGS) -o $(SERVER_BONUS) $(OBJS_BNS_SR) L./libft -lft 
+#	$(CC) $(CFLAGS) -o $(SERVER_BONUS) $(OBJS_BNS_SR) L./libft -lft
 #
 # LIBFT
 $(LIBFT):
