@@ -109,3 +109,23 @@ void	get_node_push(t_Node **stack, t_Node **ttarget, char stack_name)
 		current = *stack;
 	}
 }
+
+
+void	sorting_five(t_Node **stack_a, t_Node **stack_b)
+{
+	t_Node	*current;
+
+
+	while(stacksize(stack_a) > 3)
+	{
+		current = get_lowest_node(stack_a);
+		get_node_push(stack_a, &current, 'a');
+		pb(stack_a, stack_b);
+	}
+	if(stacksize(stack_a) == 3)
+		tiny_sort(stack_a);
+	if(stacksize(stack_a) == 2)
+		two_numbers_one_function(stack_a);
+	while (stacksize(stack_b) > 0)
+		pa(stack_b, stack_a);
+}

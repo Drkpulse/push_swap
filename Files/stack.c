@@ -18,7 +18,7 @@ int	validator(t_Node **stack, char **argv, int argc)
 	int	flag;
 
 	flag = 1;
-	if (argc == 2)
+	if (argc == 2 && number_validator(argv))
 	{
 		argv = ft_split(argv[1], ' ');
 		flag = 0;
@@ -30,9 +30,9 @@ int	validator(t_Node **stack, char **argv, int argc)
 			catch_error(NULL, NULL, argv, !flag);
 		i++;
 	}
-	if (duplicates(argv))
+	if (duplicates(argv, flag))
 		catch_error(NULL, NULL, argv, !flag);
-	ini_stack(stack, argv);
+	ini_stack(stack, argv, flag);
 	if (flag == 0)
 		free_argv(argv);
 	return (flag);
@@ -56,18 +56,18 @@ bool	syntax_error(char *str_nbr)
 	return (false);
 }
 
-bool	duplicates(char **argv)
+bool	duplicates(char **argv, int flag)
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	i = flag;
 	while (argv[i])
 	{
 		j = i + 1;
 		while (argv[j])
 		{
-			if (strcmp(argv[i], argv[j]) == 0)
+			if (ft_atol(argv[i]) == ft_atol(argv[j]))
 				return (true);
 			j++;
 		}
@@ -76,18 +76,20 @@ bool	duplicates(char **argv)
 	return (false);
 }
 
-void	ini_stack(t_Node **stack, char **argv)
+void	ini_stack(t_Node **stack, char **argv, int flag)
 {
 	int			i;
 	t_Node		*new;
 	t_Node		*temp;
 
-	i = 0;
+	i = flag;
 	while (argv[i])
 	{
+		if(ft_atol(argv[i]) > 2147483647 || ft_atol(argv[i]) < -2147483648)
+			catch_error(stack, NULL, argv, !flag);
 		new = (t_Node *)malloc(sizeof(t_Node));
 		if (!new)
-			catch_error(stack, NULL, argv, 0);
+			catch_error(stack, NULL, argv, !flag);
 		new->number = ft_atol(argv[i]);
 		ini_node(&new);
 		if (!*stack)

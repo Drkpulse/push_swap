@@ -32,11 +32,12 @@ typedef struct Node_Stack
 }	t_Node;
 
 bool		stack_sorted(t_Node *stack);
-void		ini_stack(t_Node **stack, char **argv);
+void	ini_stack(t_Node **stack, char **argv, int flag);
 void		ini_node(t_Node **stack);
 int			validator(t_Node **stack, char **argv, int argc);
-bool		duplicates(char **argv);
+bool	duplicates(char **argv, int flag);
 bool		syntax_error(char *str_nbr);
+bool		number_validator(char **argv);
 
 // Swap Fucntions
 void		swapations(t_Node **stack);
@@ -64,6 +65,8 @@ t_Node		*get_node_b(t_Node **stack_b, int number);
 t_Node		*get_node_b(t_Node **stack_b, int number);
 t_Node		*get_biggest_node(t_Node **stack);
 t_Node		*get_lowest_node(t_Node **stack);
+void		sorting_five(t_Node **stack_a, t_Node **stack_b);
+void		two_numbers_one_function(t_Node **stack);
 int			stacksize(t_Node **stack);
 int			catch_cost(t_Node **stack_a);
 int			get_more_moves(int index, bool median, int itarget, bool tmedian);

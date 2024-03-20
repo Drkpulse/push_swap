@@ -77,3 +77,9 @@ void	get_it_together(t_Node **stack)
 			rra(stack);
 	}
 }
+
+void	two_numbers_one_function(t_Node **stack)
+{
+	if ((*stack)->number > (*stack)->next->number)
+		sa(stack);
+}

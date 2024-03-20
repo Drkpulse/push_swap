@@ -20,15 +20,19 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (0);
+		catch_error(NULL, NULL, NULL, 2);
 	validator(&stack_a, argv, argc);
 	if (stack_sorted(stack_a))
 		ft_clean(&stack_a, NULL, argv);
-	if (stacksize(&stack_a) == 3)
+	else if (stacksize(&stack_a) == 2)
+		two_numbers_one_function(&stack_a);
+	else if (stacksize(&stack_a) == 3)
 		tiny_sort(&stack_a);
+	else if (stacksize(&stack_a) <= 5)
+		sorting_five(&stack_a, &stack_b);
 	else
 		thelastsort(&stack_a, &stack_b);
-	// printstack(&stack_a);
+	//print_info(&stack_a);
 	ft_clean(&stack_a, &stack_b, NULL);
 	return (0);
 }
