@@ -6,11 +6,11 @@
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:08:51 by joseferr          #+#    #+#             */
-/*   Updated: 2024/02/26 10:08:51 by joseferr         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:28:45 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "include/push_swap.h"
 
 void	push(t_Node **frststack, t_Node **lststack)
 {

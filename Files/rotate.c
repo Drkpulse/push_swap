@@ -6,15 +6,15 @@
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 21:09:43 by joseferr          #+#    #+#             */
-/*   Updated: 2024/02/25 21:09:43 by joseferr         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:30:26 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "include/push_swap.h"
 
-void	c_rotations(t_cNode **stack)
+void	rotations(t_Node **stack)
 {
-	t_cNode	*last_node;
+	t_Node	*last_node;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
@@ -24,20 +24,24 @@ void	c_rotations(t_cNode **stack)
 	last_node->next = *stack;
 	*stack = (*stack)->next;
 	last_node->next->next = NULL;
+	update_index(stack);
 }
 
-void	c_ra(t_cNode **stack)
+void	ra(t_Node **stack)
 {
-	c_rotations(stack);
+	rotations(stack);
+	printf("ra\n");
 }
 
-void	c_rb(t_cNode **stack)
+void	rb(t_Node **stack)
 {
-	c_rotations(stack);
+	rotations(stack);
+	printf("rb\n");
 }
 
-void	c_rr(t_cNode **astack, t_cNode **bstack)
+void	rr(t_Node **astack, t_Node **bstack)
 {
-	c_rotations(astack);
-	c_rotations(bstack);
+	rotations(astack);
+	rotations(bstack);
+	printf("rr\n");
 }

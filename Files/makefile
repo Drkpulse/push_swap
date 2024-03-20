@@ -6,7 +6,7 @@
 #    By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/26 10:49:53 by joseferr          #+#    #+#              #
-#    Updated: 2024/02/26 10:49:53 by joseferr         ###   ########.fr        #
+#    Updated: 2024/03/18 13:30:54 by joseferr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,10 @@ SRCS = 	./main.c \
 		./sort_utils.c \
 		./stack_utils.c \
 		./sort_utils2.c \
-		./moves/push.c \
-		./moves/swap.c \
-		./moves/rotate.c \
-		./moves/rev_rotate.c
+		./push.c \
+		./swap.c \
+		./rotate.c \
+		./rev_rotate.c
 
 OBJS = $(SRCS:.c=.o)
 

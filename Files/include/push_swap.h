@@ -6,14 +6,14 @@
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:58:25 by joseferr          #+#    #+#             */
-/*   Updated: 2024/01/24 17:11:38 by joseferr         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:26:41 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "../Libft/libft.h"
-# include "checker.h"
+# include "../libft/libft.h"
+// # include "checker.h"
 # include <limits.h>
 # include <stdbool.h>
 # include <stdio.h>
