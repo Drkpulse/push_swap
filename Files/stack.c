@@ -85,7 +85,7 @@ void	ini_stack(t_Node **stack, char **argv, int flag)
 	i = flag;
 	while (argv[i])
 	{
-		if(ft_atol(argv[i]) > 2147483647 || ft_atol(argv[i]) < -2147483648)
+		if (ft_atol(argv[i]) > 2147483647 || ft_atol(argv[i]) < -2147483648)
 			catch_error(stack, NULL, argv, !flag);
 		new = (t_Node *)malloc(sizeof(t_Node));
 		if (!new)

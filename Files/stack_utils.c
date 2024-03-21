@@ -74,14 +74,14 @@ void	print_info(t_Node **stack)
 
 bool	number_validator(char **argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (argv[1][i])
 	{
 		if (argv[1][i] >= '0' && argv[1][i] <= '9')
-			return(true);
+			return (true);
 		i++;
 	}
-	return(false);
+	return (false);
 }

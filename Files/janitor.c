@@ -58,7 +58,6 @@ void	ft_clean(t_Node **a, t_Node **b, char **argv)
 void	catch_error(t_Node **a, t_Node **b, char **argv, bool argv_f)
 {
 	write(2, "Error\n", 7);
-	//write(2, "\033[0;31mError\033[0m\n", 17);
 	if (argv_f)
 		free_argv(argv);
 	ft_clean(a, b, argv);

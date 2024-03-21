@@ -32,7 +32,6 @@ int	main(int argc, char **argv)
 		sorting_five(&stack_a, &stack_b);
 	else
 		thelastsort(&stack_a, &stack_b);
-	//print_info(&stack_a);
 	ft_clean(&stack_a, &stack_b, NULL);
 	return (0);
 }

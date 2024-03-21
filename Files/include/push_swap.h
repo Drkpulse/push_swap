@@ -13,7 +13,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
-// # include "checker.h"
 # include <limits.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -32,10 +31,10 @@ typedef struct Node_Stack
 }	t_Node;
 
 bool		stack_sorted(t_Node *stack);
-void	ini_stack(t_Node **stack, char **argv, int flag);
+void		ini_stack(t_Node **stack, char **argv, int flag);
 void		ini_node(t_Node **stack);
 int			validator(t_Node **stack, char **argv, int argc);
-bool	duplicates(char **argv, int flag);
+bool		duplicates(char **argv, int flag);
 bool		syntax_error(char *str_nbr);
 bool		number_validator(char **argv);
 
