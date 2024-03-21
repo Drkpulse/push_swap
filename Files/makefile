@@ -27,21 +27,21 @@ SRCS = 	./main.c \
 		./sort_utils.c \
 		./stack_utils.c \
 		./sort_utils2.c \
-		./push.c \
-		./swap.c \
-		./rotate.c \
-		./rev_rotate.c
+		./moves/push.c \
+		./moves/swap.c \
+		./moves/rotate.c \
+		./moves/rev_rotate.c
 
-BONUS_SRCS = 	./Bonus/checker.c \
-				./Bonus/get_next_line.c \
-				./Bonus/get_next_line_utils.c \
+BONUS_SRCS = 	./bonus/checker.c \
+				./bonus/get_next_line.c \
+				./bonus/get_next_line_utils.c \
 				./sorting.c \
 				./stack.c \
 				./janitor.c \
-				./push.c \
-				./swap.c \
-				./rotate.c \
-				./rev_rotate.c \
+				./moves/push.c \
+				./moves/swap.c \
+				./moves/rotate.c \
+				./moves/rev_rotate.c \
 				./stack_utils.c \
 				./sort_utils.c \
 				./sort_utils2.c

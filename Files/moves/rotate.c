@@ -1,49 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/25 21:09:36 by joseferr          #+#    #+#             */
-/*   Updated: 2024/03/18 13:30:27 by joseferr         ###   ########.fr       */
+/*   Created: 2024/02/25 21:09:43 by joseferr          #+#    #+#             */
+/*   Updated: 2024/03/18 13:30:26 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "../include/push_swap.h"
 
-void	revrotate(t_Node **stack)
+void	rotations(t_Node **stack)
 {
-	t_Node	*second_last_node;
 	t_Node	*last_node;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	second_last_node = *stack;
-	while (second_last_node->next->next != NULL)
-		second_last_node = second_last_node->next;
-	last_node = second_last_node->next;
-	second_last_node->next = NULL;
+	last_node = *stack;
+	while (last_node->next != NULL)
+		last_node = last_node->next;
 	last_node->next = *stack;
-	*stack = last_node;
+	*stack = (*stack)->next;
+	last_node->next->next = NULL;
 	update_index(stack);
 }
 
-void	rra(t_Node **stack)
+void	ra(t_Node **stack)
 {
-	revrotate(stack);
-	printf("rra\n");
+	rotations(stack);
+	printf("ra\n");
 }
 
-void	rrb(t_Node **stack)
+void	rb(t_Node **stack)
 {
-	revrotate(stack);
-	printf("rrb\n");
+	rotations(stack);
+	printf("rb\n");
 }
 
-void	rrr(t_Node **astack, t_Node **bstack)
+void	rr(t_Node **astack, t_Node **bstack)
 {
-	revrotate(astack);
-	revrotate(bstack);
-	printf("rrr\n");
+	rotations(astack);
+	rotations(bstack);
+	printf("rr\n");
 }
