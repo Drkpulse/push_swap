@@ -124,8 +124,13 @@ void	sorting_five(t_Node **stack_a, t_Node **stack_b)
 	}
 	if(stacksize(stack_a) == 3)
 		tiny_sort(stack_a);
-	if(stacksize(stack_a) == 2)
+	else if(stacksize(stack_a) == 2)
 		two_numbers_one_function(stack_a);
 	while (stacksize(stack_b) > 0)
 		pa(stack_b, stack_a);
+	while (!stack_sorted(*stack_a))
+	{
+		ra(stack_a);
+	}
+
 }
