@@ -4,9 +4,9 @@ Because Swap_push isn’t as natural
 
 ## This Push_Swap
 
-Does 100 random numbers in 580 avrg
+Does 100 random numbers in 580 moves avrg
 
-Does 500 random numbers in 5100 avrg
+Does 500 random numbers in 5100 moves avrg
 
 ## Push_Swap Rules
 
