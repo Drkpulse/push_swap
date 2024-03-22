@@ -1,9 +1,14 @@
-# push_swap
+# Push_Swap
 This project will make you sort data on a stack, with a limited set of instructions, using the lowest possible number of actions. To succeed you’ll have to manipulate various types of algorithms and choose the most appropriate solution (out of many) for an optimized data sorting.
 Because Swap_push isn’t as natural
 
+## This Push_Swap
 
-## Push_Swap Rules and Grading
+Does 100 random numbers in 580 avrg
+
+Does 500 random numbers in 5100 avrg
+
+## Push_Swap Rules
 
 The program is only allowed two stacks to work with, stack A and stack B. All the numbers are initially added to stack A, and B is empty.
 
@@ -20,25 +25,6 @@ The possible actions are:
 * ```rra``` (reverse rotate A): Shift all elements of stack A down by 1. The last element becomes the first one.
 * ```rrb``` (reverse rotate B): Shift all elements of stack b down by 1. The last element becomes the first one.
 * ```rrr``` : ```rra``` and ```rrb``` at the same time.
-
-The grade depends on how efficient the program's sorting process is.
- 
-* Sorting 3 values: no more than 3 actions.
-* Sorting 5 values: no more than 12 actions.
-* Sorting 100 values: rating from 1 to 5 points depending on the number of actions:
-  * 5 points for less than 700 actions
-  * 4 points for less than 900
-  * 3 points for less than 1100
-  * 2 points for less than 1300
-  * 1 point for less than 1500
-* Sorting 500 values: rating from 1 to 5 points depending on the number of actions:
-  * 5 points for less than 5500 actions
-  * 4 points for less than 7000
-  * 3 points for less than 8500
-  * 2 points for less than 10000
-  * 1 point for less than 11500
-
-Validating the project requires at least 80/100.
 
 ## Bonus
 
