@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:35:08 by joseferr          #+#    #+#             */
-/*   Updated: 2023/10/12 11:48:58 by joseferr         ###   ########.fr       */
+/*   Created: 2023/10/06 15:34:02 by joseferr          #+#    #+#             */
+/*   Updated: 2023/10/10 21:06:29 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
+	int	result;
+	int	sign;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	result = 0;
+	sign = 1;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign *= -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + *str - '0';
+		str++;
+	}
+	return (result * sign);
 }
-/*
-int main()
-{
-	char frs[10] = "Heyo";
-
-	printf("%d", ft_strlen(frs));
-}*/

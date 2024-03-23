@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 11:47:23 by joseferr          #+#    #+#             */
-/*   Updated: 2023/10/10 21:01:07 by joseferr         ###   ########.fr       */
+/*   Created: 2023/10/10 18:11:32 by joseferr          #+#    #+#             */
+/*   Updated: 2023/10/17 17:36:48 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-void	*ft_memcpy(void *str2, const void *src, size_t n)
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	unsigned char	*frs1;
+	unsigned char	*frs2;
 
-	i = 0;
-	d = str2;
-	s = src;
-	if (!d && !s)
-		return (str2);
-	while (i < n)
+	frs1 = (unsigned char *)str1;
+	frs2 = (unsigned char *)str2;
+	while (n && *frs1 == *frs2)
 	{
-		d[i] = s[i];
-		i++;
+		frs1++;
+		frs2++;
+		n--;
 	}
-	return (str2);
+	if (n)
+		return (*frs1 - *frs2);
+	else
+		return (0);
 }
 /*
-int	main(void)
+int main ()
 {
-	char frs[]="Cookies!!";
-	char str2[10];
-	printf("%s\n", ft_memcpy(str2, frs, 8));
+   char str1[15] = "abcdEF";
+   char str2[15] = "abcdEf";
+
+	printf("%d\n", ft_memcmp(str1, str2, 6));
+
+   return(0);
 }*/
