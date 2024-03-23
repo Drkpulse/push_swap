@@ -14,9 +14,8 @@
 # define CHECKER_H
 # include "push_swap.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
+# define BUFFER_SIZE 42
+
 // GNL Functions
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
