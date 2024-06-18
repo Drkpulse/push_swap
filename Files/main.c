@@ -19,7 +19,9 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	if (argc == 1)
+		return (1);
+	if (argc == 2 && !argv[1][0])
 		catch_error(NULL, NULL, NULL, 2);
 	validator(&stack_a, argv, argc);
 	if (stack_sorted(stack_a))
