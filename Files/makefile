@@ -16,7 +16,7 @@
 NAME	= push_swap
 
 #LIBFT Variables
-LIBFT		= ./libft/libft.a
+LIBFT		= libft/bin/libft.a
 BONUS		= checker
 
 # Push_Swap Sources
@@ -33,8 +33,7 @@ SRCS = 	./main.c \
 		./moves/rev_rotate.c
 
 BONUS_SRCS = 	./bonus/checker.c \
-				./bonus/get_next_line.c \
-				./bonus/get_next_line_utils.c \
+				./libft/gnl/get_next_line_bonus.c \
 				./sorting.c \
 				./stack.c \
 				./janitor.c \
@@ -69,18 +68,18 @@ all: $(LIBFT) $(NAME)
 	@printf "$(PURPLE)==> $(GREEN)🚀 Push_swap compiled \n\n$(RESET)"
 
 libft: $(LIBFT)
-\
+
 bonus: $(LIBFT) $(NAME) $(BONUS)
 	@printf "$(PURPLE)==> $(GREEN)🚀 Checker compiled \n\n$(RESET)"
 
 clean:
-	${MAKE} clean -C ./libft
+	${MAKE} clean -C libft
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_BNS)
 	@printf "\n$(PURPLE)==> $(RED)🧹 Cleaned Temp Push_swap \n$(RESET)"
 
 fclean: clean
-	${MAKE} fclean -C ./libft
+	${MAKE} fclean -C libft
 	$(RM) $(NAME)
 	@printf "\n$(PURPLE)==> $(RED)🗑️ Removed Push_swap \n$(RESET)"
 
@@ -93,12 +92,12 @@ debug: all clean
 
 # Full Program
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./libft -lft
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./libft/bin -lft
 
 # BONUS
 $(BONUS): $(OBJS_BNS)
-	$(CC) $(CFLAGS) -o $(BONUS) $(OBJS_BNS) -L./libft -lft
+	$(CC) $(CFLAGS) -o $(BONUS) $(OBJS_BNS) -L./libft/bin -lft
 
 # LIBFT
 $(LIBFT):
-	${MAKE} --no-print-directory -C ./libft
+	${MAKE} all -C libft

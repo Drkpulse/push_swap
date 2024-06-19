@@ -110,24 +110,20 @@ void	get_node_push(t_Node **stack, t_Node **ttarget, char stack_name)
 	}
 }
 
-void	sorting_five(t_Node **stack_a, t_Node **stack_b)
+void	get_it_together(t_Node **stack)
 {
-	t_Node	*current;
+	t_Node	*min;
 
-	while (stacksize(stack_a) > 3)
+	if (*stack == NULL || stack_sorted(*stack))
+		return ;
+	min = get_lowest_node(stack);
+	if (min == NULL)
+		return ;
+	while (!stack_sorted(*stack) && *stack != min)
 	{
-		current = get_lowest_node(stack_a);
-		get_node_push(stack_a, &current, 'a');
-		pb(stack_a, stack_b);
-	}
-	if (stacksize(stack_a) == 3)
-		tiny_sort(stack_a);
-	else if (stacksize(stack_a) == 2)
-		two_numbers_one_function(stack_a);
-	while (stacksize(stack_b) > 0)
-		pa(stack_b, stack_a);
-	while (!stack_sorted(*stack_a))
-	{
-		ra(stack_a);
+		if (!min->median)
+			ra(stack);
+		else
+			rra(stack);
 	}
 }

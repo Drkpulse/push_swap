@@ -12,17 +12,6 @@
 
 #include "../include/checker.h"
 
-static int	ft_strcmp(char *str_1, char *str_2)
-{
-	while (*str_1 == *str_2
-		&& *str_1)
-	{
-		++str_1;
-		++str_2;
-	}
-	return (*str_1 - *str_2);
-}
-
 static void	error(t_Node **a, t_Node **b)
 {
 	free_stack(a);
