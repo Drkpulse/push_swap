@@ -42,6 +42,20 @@ bool	stack_sorted(t_Node *stack)
 	return (true);
 }
 
+bool	number_validator(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[1][i])
+	{
+		if (argv[1][i] >= '0' && argv[1][i] <= '9')
+			return (true);
+		i++;
+	}
+	return (false);
+}
+
 void	printstack(t_Node **stack)
 {
 	t_Node	*current;
@@ -67,21 +81,8 @@ void	print_info(t_Node **stack)
 		printf("number: %ld ", print->number);
 		printf("index: %d ", print->index);
 		printf("target: %d ", print->target);
-		printf("cost: %d\n", print->cost);
+		printf("cost: %d ", print->cost);
+		printf("median: %d\n", print->median);
 		print = print->next;
 	}
-}
-
-bool	number_validator(char **argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[1][i])
-	{
-		if (argv[1][i] >= '0' && argv[1][i] <= '9')
-			return (true);
-		i++;
-	}
-	return (false);
 }

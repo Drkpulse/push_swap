@@ -12,50 +12,6 @@
 
 #include "include/push_swap.h"
 
-void	update_index(t_Node **stack)
-{
-	t_Node		*top;
-	int			index;
-
-	if (!stack)
-		return ;
-	index = 0;
-	top = *stack;
-	while (top)
-	{
-		top->index = index;
-		if (index > stacksize(stack) / 2)
-			top->median = true;
-		else
-			top->median = false;
-		index++;
-		top = top->next;
-	}
-}
-
-int	catch_cost(t_Node **stack)
-{
-	t_Node		*current;
-	int			saved_cost;
-	int			cheap_index;
-
-	current = *stack;
-	saved_cost = INT_MAX;
-	cheap_index = 0;
-	if (current == NULL)
-		return (-1);
-	while (current != NULL && current->cost >= 0)
-	{
-		if (current->cost < saved_cost)
-		{
-			saved_cost = current->cost;
-			cheap_index = current->index;
-		}
-		current = current->next;
-	}
-	return (cheap_index);
-}
-
 void	get_node_cost(t_Node **stack_a, t_Node **stack_b)
 {
 	t_Node		*current;
@@ -82,31 +38,67 @@ void	get_node_cost(t_Node **stack_a, t_Node **stack_b)
 		current = current->next;
 	}
 }
-
-void	get_node_push(t_Node **stack, t_Node **ttarget, char stack_name)
+int	catch_cost(t_Node **stack)
 {
-	t_Node	*current;
-	t_Node	*target;
+	t_Node		*current;
+	int			saved_cost;
+	int			cheap_index;
 
 	current = *stack;
-	target = *ttarget;
-	while (current != target)
+	saved_cost = INT_MAX;
+	cheap_index = 0;
+	if (current == NULL)
+		return (-1);
+	while (current != NULL && current->cost >= 0)
 	{
-		if (stack_name == 'a')
+		if (current->cost < saved_cost)
 		{
-			if (!target->median)
-				ra(stack);
-			else
-				rra(stack);
+			saved_cost = current->cost;
+			cheap_index = current->index;
 		}
-		if (stack_name == 'b')
-		{
-			if (!target->median)
-				rb(stack);
-			else
-				rrb(stack);
-		}
-		current = *stack;
+		current = current->next;
+	}
+	return (cheap_index);
+}
+
+int	get_more_moves(int index, bool median, int itarget, bool tmedian)
+{
+	if (!median && !tmedian)
+	{
+		if (index > itarget)
+			return (index + median);
+		else
+			return (itarget + tmedian);
+	}
+	else if (median && tmedian)
+	{
+		if (index > itarget)
+			return (index + median);
+		else
+			return (itarget + tmedian);
+	}
+	else
+		return (index + median + itarget + tmedian);
+}
+
+void	update_index(t_Node **stack)
+{
+	t_Node		*top;
+	int			index;
+
+	if (!stack)
+		return ;
+	index = 0;
+	top = *stack;
+	while (top)
+	{
+		top->index = index;
+		if (index > stacksize(stack) / 2)
+			top->median = true;
+		else
+			top->median = false;
+		index++;
+		top = top->next;
 	}
 }
 

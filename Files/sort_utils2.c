@@ -77,15 +77,29 @@ t_Node	*get_biggest_node(t_Node **stack)
 	return (biggest_node);
 }
 
-int	get_more_moves(int index, bool median, int itarget, bool tmedian)
+void	get_node_push(t_Node **stack, t_Node **ttarget, char stack_name)
 {
-	if ((median && tmedian) || (!median && !tmedian))
+	t_Node	*current;
+	t_Node	*target;
+
+	current = *stack;
+	target = *ttarget;
+	while (current != target)
 	{
-		if (index > itarget)
-			return (index);
-		else
-			return (itarget);
+		if (stack_name == 'a')
+		{
+			if (!target->median)
+				ra(stack);
+			else
+				rra(stack);
+		}
+		if (stack_name == 'b')
+		{
+			if (!target->median)
+				rb(stack);
+			else
+				rrb(stack);
+		}
+		current = *stack;
 	}
-	else
-		return (index + itarget);
 }
