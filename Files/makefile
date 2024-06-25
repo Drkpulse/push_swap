@@ -80,7 +80,7 @@ clean:
 
 fclean: clean
 	${MAKE} fclean -C libft
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(BONUS)
 	@printf "\n$(PURPLE)==> $(RED)🗑️ Removed Push_swap \n$(RESET)"
 
 re: fclean all
