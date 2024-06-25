@@ -6,7 +6,7 @@
 /*   By: joseferr <joseferr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:20:22 by joseferr          #+#    #+#             */
-/*   Updated: 2024/03/01 11:20:22 by joseferr         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:07:47 by joseferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	get_node_cost(t_Node **stack_a, t_Node **stack_b)
 		current = current->next;
 	}
 }
+
 int	catch_cost(t_Node **stack)
 {
 	t_Node		*current;
